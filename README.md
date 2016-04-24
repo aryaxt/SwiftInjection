@@ -32,7 +32,7 @@ Bind as Singleton
 ```swift
 bind(Session.self, asSingleton: true) { Session() }
 // Then when it needs to be injected
-let dbAdapter = inject(Session.self)
+let session = inject(Session.self)
 ```
 Bind Named Instances
 ```swift
