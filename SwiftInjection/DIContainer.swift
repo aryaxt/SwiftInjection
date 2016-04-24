@@ -73,7 +73,7 @@ public class DIContainer {
 	
 	/**
 	Binds a class or protocol to an instance provided through a closure
-	This method is marked as internal, instead of this Subclass DIAbstractModule to implement binding
+	This method is marked as internal, instead of using this method, Subclass DIAbstractModule to implement binding
 	
 	- parameter type:        Protocol or a Class
 	- parameter asSingleton: if true DI will use a single instance wherever injected

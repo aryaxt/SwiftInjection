@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		15560AB81CCD514A00888CAD /* DINamedBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15560AB71CCD514A00888CAD /* DINamedBinding.swift */; };
+		15560ABA1CCD910B00888CAD /* DIBindingProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15560AB91CCD910B00888CAD /* DIBindingProviderTests.swift */; };
+		15560ABC1CCD93EE00888CAD /* DINamedBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15560ABB1CCD93EE00888CAD /* DINamedBindingTests.swift */; };
 		15FFF96A1CCC85EA00767A0F /* SwiftInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = 15FFF9691CCC85EA00767A0F /* SwiftInjection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		15FFF9711CCC85EA00767A0F /* SwiftInjection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15FFF9661CCC85EA00767A0F /* SwiftInjection.framework */; };
 		15FFF9971CCC86F900767A0F /* DIAbstractModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF9941CCC86F900767A0F /* DIAbstractModule.swift */; };
@@ -35,6 +37,8 @@
 
 /* Begin PBXFileReference section */
 		15560AB71CCD514A00888CAD /* DINamedBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DINamedBinding.swift; sourceTree = "<group>"; };
+		15560AB91CCD910B00888CAD /* DIBindingProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIBindingProviderTests.swift; sourceTree = "<group>"; };
+		15560ABB1CCD93EE00888CAD /* DINamedBindingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DINamedBindingTests.swift; sourceTree = "<group>"; };
 		15FFF9661CCC85EA00767A0F /* SwiftInjection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftInjection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15FFF9691CCC85EA00767A0F /* SwiftInjection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftInjection.h; sourceTree = "<group>"; };
 		15FFF96B1CCC85EA00767A0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 			children = (
 				15FFF99B1CCC871900767A0F /* Model */,
 				15FFF99A1CCC871900767A0F /* DIContainerTests.swift */,
+				15560AB91CCD910B00888CAD /* DIBindingProviderTests.swift */,
+				15560ABB1CCD93EE00888CAD /* DINamedBindingTests.swift */,
 				15FFF9771CCC85EA00767A0F /* Info.plist */,
 			);
 			path = SwiftInjectionTests;
@@ -252,6 +258,8 @@
 				15FFF9A51CCC871900767A0F /* Pump.swift in Sources */,
 				15FFF9A21CCC871900767A0F /* CoffeeMaker.swift in Sources */,
 				15FFF9A31CCC871900767A0F /* ElectricHeater.swift in Sources */,
+				15560ABA1CCD910B00888CAD /* DIBindingProviderTests.swift in Sources */,
+				15560ABC1CCD93EE00888CAD /* DINamedBindingTests.swift in Sources */,
 				15FFF9A61CCC871900767A0F /* RegularPump.swift in Sources */,
 				15FFF9A41CCC871900767A0F /* Heater.swift in Sources */,
 			);

@@ -13,8 +13,8 @@ public class AppModule: DIAbstractModule, DIModule {
 	public func load() {
 		bind(GithubClient.self) { GithubHttpClient(baseUrl: "https://api.github.com") }
 		bind(NSUserDefaults.self, asSingleton: false) { NSUserDefaults.standardUserDefaults() }
-		bind(AnalyticsTracker.self, named: GoogleAnalyticsTracker.analyticsIdentifier()) {  GoogleAnalyticsTracker() }
-		bind(AnalyticsTracker.self, named: AmplitudeAnalyticsTracker.analyticsIdentifier()) {  AmplitudeAnalyticsTracker() }
+		bind(AnalyticsTracker.self, named: GoogleAnalyticsTracker.analyticsIdentifier()) { GoogleAnalyticsTracker() }
+		bind(AnalyticsTracker.self, named: AmplitudeAnalyticsTracker.analyticsIdentifier()) { AmplitudeAnalyticsTracker() }
 	}
 	
 }
