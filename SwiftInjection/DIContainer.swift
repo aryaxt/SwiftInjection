@@ -6,15 +6,19 @@
 //  Copyright © 2016 Aryan Ghassemi. All rights reserved.
 //
 
-public func inject<T>(type: T.Type) -> T {
+public func inject<T>(type: T.Type, named: String? = nil) -> T {
 	return DIContainer.instance.resolve(type)
+}
+
+public func injectAll<T>(type: T.Type) -> [T] {
+	return DIContainer.instance.resolveAll(type)
 }
 
 public class DIContainer {
 
 	public static let instance = DIContainer()
 	public typealias BindingClosure = Void->AnyObject
-	private var bindingDictionary = [String: DIBindingInfo]()
+	private var bindingDictionary = [String: DIBindingProvider]()
 	
 	/**
 	Adds all binding from module to DIContainer
@@ -32,17 +36,36 @@ public class DIContainer {
 	
 	- returns: An instance of class or an implementation of a protocol
 	*/
-	public func resolve<T>(type: T.Type) -> T {
+	public func resolve<T>(type: T.Type, named: String? = nil) -> T {
 		let typeString = String(type)
 		
-		if let bindingInfo = bindingDictionary[typeString] {
-			let result = bindingInfo.provideInstance()
+		if let bindingProvider = bindingDictionary[typeString] {
+			let result = bindingProvider.provideInstance(named)
 			
 			if let result = result as? T {
 				return result
 			}
 			
 			fatalError("Invalid object type \(String(result.dynamicType)) for binding \(typeString)")
+		}
+		
+		fatalError("No binding found for \(typeString)")
+	}
+	
+	/**
+	Returns all instances that were bound to a protocol
+	
+	- parameter type: a protocol or a base class
+	
+	- returns: an array of implementations
+	*/
+	public func resolveAll<T>(type: T.Type) -> [T] {
+		let typeString = String(type)
+		
+		if let bindingProvider = bindingDictionary[typeString] {
+			let result = bindingProvider.provideAllInstances()
+			// TODO: Think
+			return result.flatMap { $0 as? T }
 		}
 		
 		fatalError("No binding found for \(typeString)")
@@ -56,14 +79,19 @@ public class DIContainer {
 	- parameter asSingleton: if true DI will use a single instance wherever injected
 	- parameter closure:     closure to provide an injection object
 	*/
-	internal func bind<T>(type: T.Type, asSingleton: Bool = false, closure: BindingClosure) {
+	internal func bind<T>(type: T.Type, named: String? = nil, asSingleton: Bool = false, closure: BindingClosure) {
 		let typeString = String(type)
+		let bindingProvider: DIBindingProvider
 		
-		if let _ = bindingDictionary[typeString] {
-			fatalError("Binding for \(typeString) already exists")
+		if let existing = bindingDictionary[typeString] {
+			bindingProvider = existing
+		}
+		else {
+			bindingProvider = DIBindingProvider()
+			bindingDictionary[typeString] = bindingProvider
 		}
 		
-		bindingDictionary[typeString] = DIBindingInfo(closure: closure, asSingleton: asSingleton)
+		bindingProvider.addBinding(closure, named: named, asSingleton: asSingleton)
 	}
 
 }

@@ -24,6 +24,9 @@
 		15FFFA101CCCA4F400767A0F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA0F1CCCA4F400767A0F /* Result.swift */; };
 		15FFFA141CCCA92900767A0F /* GithubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA121CCCA92900767A0F /* GithubClient.swift */; };
 		15FFFA151CCCA92900767A0F /* GithubHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA131CCCA92900767A0F /* GithubHttpClient.swift */; };
+		15FFFA191CCD30B800767A0F /* AnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA181CCD30B800767A0F /* AnalyticsTracker.swift */; };
+		15FFFA1B1CCD315200767A0F /* GoogleAnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA1A1CCD315200767A0F /* GoogleAnalyticsTracker.swift */; };
+		15FFFA1D1CCD316300767A0F /* AmplitudeAnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA1C1CCD316300767A0F /* AmplitudeAnalyticsTracker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +83,9 @@
 		15FFFA0F1CCCA4F400767A0F /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		15FFFA121CCCA92900767A0F /* GithubClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubClient.swift; sourceTree = "<group>"; };
 		15FFFA131CCCA92900767A0F /* GithubHttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubHttpClient.swift; sourceTree = "<group>"; };
+		15FFFA181CCD30B800767A0F /* AnalyticsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTracker.swift; sourceTree = "<group>"; };
+		15FFFA1A1CCD315200767A0F /* GoogleAnalyticsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalyticsTracker.swift; sourceTree = "<group>"; };
+		15FFFA1C1CCD316300767A0F /* AmplitudeAnalyticsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplitudeAnalyticsTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +194,9 @@
 			children = (
 				15FFFA121CCCA92900767A0F /* GithubClient.swift */,
 				15FFFA131CCCA92900767A0F /* GithubHttpClient.swift */,
+				15FFFA181CCD30B800767A0F /* AnalyticsTracker.swift */,
+				15FFFA1A1CCD315200767A0F /* GoogleAnalyticsTracker.swift */,
+				15FFFA1C1CCD316300767A0F /* AmplitudeAnalyticsTracker.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -326,13 +335,16 @@
 			files = (
 				15FFFA051CCC8E4100767A0F /* HttpClient.swift in Sources */,
 				15FFF9B61CCC876000767A0F /* ViewController.swift in Sources */,
+				15FFFA1D1CCD316300767A0F /* AmplitudeAnalyticsTracker.swift in Sources */,
 				15FFFA0B1CCC94BF00767A0F /* Mappable.swift in Sources */,
 				15FFFA151CCCA92900767A0F /* GithubHttpClient.swift in Sources */,
+				15FFFA1B1CCD315200767A0F /* GoogleAnalyticsTracker.swift in Sources */,
 				15FFF9B41CCC876000767A0F /* AppDelegate.swift in Sources */,
 				15FFFA101CCCA4F400767A0F /* Result.swift in Sources */,
 				15FFFA031CCC8E2700767A0F /* Client.swift in Sources */,
 				15FFFA141CCCA92900767A0F /* GithubClient.swift in Sources */,
 				15FFF9EB1CCC886600767A0F /* AppModule.swift in Sources */,
+				15FFFA191CCD30B800767A0F /* AnalyticsTracker.swift in Sources */,
 				15FFFA0E1CCC990500767A0F /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

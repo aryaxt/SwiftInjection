@@ -10,8 +10,8 @@ public class DIAbstractModule {
 	
 	public init() { }
 	
-	public func bind<T>(type: T.Type, asSingleton: Bool = false, closure: Void->AnyObject) {
-		DIContainer.instance.bind(type, asSingleton: asSingleton, closure: closure)
+	public func bind<T>(type: T.Type, named: String? = nil, asSingleton: Bool = false, closure: Void->AnyObject) {
+		DIContainer.instance.bind(type, named: named, asSingleton: asSingleton, closure: closure)
 	}
 	
 }

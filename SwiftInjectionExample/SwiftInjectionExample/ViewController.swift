@@ -13,9 +13,12 @@ class ViewController: UIViewController {
 	
 	let userDefaults = inject(NSUserDefaults.self)
 	let githubClient = inject(GithubClient.self)
+	let analyticsTrackers = injectAll(AnalyticsTracker.self)
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		analyticsTrackers.forEach { $0.trackEvent(name: "ViewController", dictionary: nil)  }
 		
 		githubClient.fetchRepos(user: "aryaxt") {
 			switch $0 {

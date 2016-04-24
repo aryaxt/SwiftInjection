@@ -18,7 +18,8 @@
 		15FFF9A41CCC871900767A0F /* Heater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF99E1CCC871900767A0F /* Heater.swift */; };
 		15FFF9A51CCC871900767A0F /* Pump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF99F1CCC871900767A0F /* Pump.swift */; };
 		15FFF9A61CCC871900767A0F /* RegularPump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF9A01CCC871900767A0F /* RegularPump.swift */; };
-		15FFFA171CCD24D800767A0F /* DIBindingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA161CCD24D800767A0F /* DIBindingInfo.swift */; };
+		15FFFA171CCD24D800767A0F /* DIBindingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA161CCD24D800767A0F /* DIBindingProvider.swift */; };
+		15FFFA1F1CCD3D2A00767A0F /* TurboPump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA1E1CCD3D2A00767A0F /* TurboPump.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +47,8 @@
 		15FFF99E1CCC871900767A0F /* Heater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heater.swift; sourceTree = "<group>"; };
 		15FFF99F1CCC871900767A0F /* Pump.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pump.swift; sourceTree = "<group>"; };
 		15FFF9A01CCC871900767A0F /* RegularPump.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularPump.swift; sourceTree = "<group>"; };
-		15FFFA161CCD24D800767A0F /* DIBindingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIBindingInfo.swift; sourceTree = "<group>"; };
+		15FFFA161CCD24D800767A0F /* DIBindingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIBindingProvider.swift; sourceTree = "<group>"; };
+		15FFFA1E1CCD3D2A00767A0F /* TurboPump.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurboPump.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,7 @@
 				15FFF9941CCC86F900767A0F /* DIAbstractModule.swift */,
 				15FFF9951CCC86F900767A0F /* DIContainer.swift */,
 				15FFF9961CCC86F900767A0F /* DIModule.swift */,
-				15FFFA161CCD24D800767A0F /* DIBindingInfo.swift */,
+				15FFFA161CCD24D800767A0F /* DIBindingProvider.swift */,
 				15FFF96B1CCC85EA00767A0F /* Info.plist */,
 			);
 			path = SwiftInjection;
@@ -117,6 +119,7 @@
 				15FFF99E1CCC871900767A0F /* Heater.swift */,
 				15FFF99F1CCC871900767A0F /* Pump.swift */,
 				15FFF9A01CCC871900767A0F /* RegularPump.swift */,
+				15FFFA1E1CCD3D2A00767A0F /* TurboPump.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,7 +234,7 @@
 			files = (
 				15FFF9981CCC86F900767A0F /* DIContainer.swift in Sources */,
 				15FFF9971CCC86F900767A0F /* DIAbstractModule.swift in Sources */,
-				15FFFA171CCD24D800767A0F /* DIBindingInfo.swift in Sources */,
+				15FFFA171CCD24D800767A0F /* DIBindingProvider.swift in Sources */,
 				15FFF9991CCC86F900767A0F /* DIModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15FFF9A11CCC871900767A0F /* DIContainerTests.swift in Sources */,
+				15FFFA1F1CCD3D2A00767A0F /* TurboPump.swift in Sources */,
 				15FFF9A51CCC871900767A0F /* Pump.swift in Sources */,
 				15FFF9A21CCC871900767A0F /* CoffeeMaker.swift in Sources */,
 				15FFF9A31CCC871900767A0F /* ElectricHeater.swift in Sources */,

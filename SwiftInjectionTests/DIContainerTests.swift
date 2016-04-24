@@ -37,4 +37,25 @@ class DIContainerTests: XCTestCase {
 		let instance2 = container.resolve(RegularPump.self)
 		XCTAssertTrue(instance1 === instance2)
 	}
+	
+	func testShouldReturnCorrectNamedInstance() {
+		let regularIdentifier = "regular"
+		let turboIdentifier = "turbo"
+		container.bind(Pump.self, named: regularIdentifier) { RegularPump() }
+		container.bind(Pump.self, named: turboIdentifier) { TurboPump() }
+		let regular = container.resolve(Pump.self, named: regularIdentifier)
+		let turbo = container.resolve(Pump.self, named: turboIdentifier)
+		XCTAssert(regular.dynamicType == RegularPump.self)
+		XCTAssert(turbo.dynamicType == TurboPump.self)
+	}
+	
+	func testShouldReturnAllInstances() {
+		let regularIdentifier = "regular"
+		let turboIdentifier = "turbo"
+		container.bind(Pump.self, named: regularIdentifier) { RegularPump() }
+		container.bind(Pump.self, named: turboIdentifier) { TurboPump() }
+		let pumps: [Pump] = container.resolveAll(Pump.self)
+		XCTAssertTrue(pumps.count == 2)
+	}
+	
 }
