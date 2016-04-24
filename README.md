@@ -21,6 +21,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
+#### Binding
+```swift
+// Bind protocol to implementation
+bind(DatabaseAdapter.self) { MySqlAdapter() }
+// Then when it needs to be injected
+let dbAdapter = inject(DatabaseAdapter.self)
+
+// Bind as Singleton
+bind(Session.self, asSingleton: true) { Session() }
+// Then when it needs to be injected
+let dbAdapter = inject(Session.self)
+
+// Bind Named Instances
+bind(AnalyticsTracker.self, named: "Google") { GoogleAnalyticsTraker() }
+bind(AnalyticsTracker.self, named: "Amplitude") { AmplitudeAnalyticsTracker() }
+// Then when it needs to be injected
+let googleAnalyticsTracker = inject(AnalyticsTracker.self, named: "Google")
+let arrayOfAnalyticsTrackers = injectAll(AnalyticsTracker.self)
+
+```
+
 #### Property Injection
 ```swift
 class ViewController: UIViewController {
