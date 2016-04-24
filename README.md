@@ -6,7 +6,8 @@ A dependency container for Swift
 ```swift
 public class AppModule: DIAbstractModule, DIModule {
 	public func load() {
-		bind(GithubClient.self) { GithubHttpClient(baseUrl: "https://api.github.com") }
+		bind(DatabaseAdapter.self) { MySqlAdapter() }
+		bind(UserStorage.self) { UserStorage() }
 		bind(Session.self, asSingleton: true) { Session() }
 		bind(NSUserDefaults.self, asSingleton: false) { NSUserDefaults.standardUserDefaults() }
 	}
@@ -23,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #### Property Injection
 ```swift
 class ViewController: UIViewController {
-	let githubClient = inject(GithubClient.self) // new instance
+	let userStorage = inject(UserStorage.self) // new instance
 	let session = inject(Session.self) // singleton instance
 	let userDefaults = inject(NSUserDefaults.self) // shared instance
 }
