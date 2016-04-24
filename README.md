@@ -22,24 +22,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ```
 
 #### Binding
+Bind protocol to implementation
 ```swift
-// Bind protocol to implementation
 bind(DatabaseAdapter.self) { MySqlAdapter() }
 // Then when it needs to be injected
 let dbAdapter = inject(DatabaseAdapter.self)
-
-// Bind as Singleton
+```
+Bind as Singleton
+```swift
 bind(Session.self, asSingleton: true) { Session() }
 // Then when it needs to be injected
 let dbAdapter = inject(Session.self)
-
-// Bind Named Instances
+```
+Bind Named Instances
+```swift
 bind(AnalyticsTracker.self, named: "Google") { GoogleAnalyticsTraker() }
 bind(AnalyticsTracker.self, named: "Amplitude") { AmplitudeAnalyticsTracker() }
 // Then when it needs to be injected
 let googleAnalyticsTracker = inject(AnalyticsTracker.self, named: "Google")
 let arrayOfAnalyticsTrackers = injectAll(AnalyticsTracker.self)
-
 ```
 
 #### Property Injection
