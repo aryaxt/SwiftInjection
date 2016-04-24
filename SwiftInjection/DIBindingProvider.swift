@@ -29,7 +29,7 @@ internal class DIBindingProvider {
 	}
 	
 	func provideAllInstances() -> [AnyObject] {
-		return Array(namedBindings.values).map { $0.provideInstance() }
+		return namedBindings.values.map { $0.provideInstance() }
 	}
 }
 
