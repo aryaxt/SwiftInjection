@@ -12,7 +12,7 @@
 		15FFF9B91CCC876000767A0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15FFF9B71CCC876000767A0F /* Main.storyboard */; };
 		15FFF9BB1CCC876000767A0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15FFF9BA1CCC876000767A0F /* Assets.xcassets */; };
 		15FFF9BE1CCC876000767A0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15FFF9BC1CCC876000767A0F /* LaunchScreen.storyboard */; };
-		15FFF9C91CCC876000767A0F /* SwiftInjectionExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF9C81CCC876000767A0F /* SwiftInjectionExampleTests.swift */; };
+		15FFF9C91CCC876000767A0F /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF9C81CCC876000767A0F /* ViewControllerTests.swift */; };
 		15FFF9D41CCC876000767A0F /* SwiftInjectionExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF9D31CCC876000767A0F /* SwiftInjectionExampleUITests.swift */; };
 		15FFF9EB1CCC886600767A0F /* AppModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF9EA1CCC886600767A0F /* AppModule.swift */; };
 		15FFF9FE1CCC8A4900767A0F /* SwiftInjection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15FFF9FD1CCC8A4900767A0F /* SwiftInjection.framework */; };
@@ -66,7 +66,7 @@
 		15FFF9BD1CCC876000767A0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15FFF9BF1CCC876000767A0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15FFF9C41CCC876000767A0F /* SwiftInjectionExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftInjectionExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		15FFF9C81CCC876000767A0F /* SwiftInjectionExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftInjectionExampleTests.swift; sourceTree = "<group>"; };
+		15FFF9C81CCC876000767A0F /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
 		15FFF9CA1CCC876000767A0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15FFF9CF1CCC876000767A0F /* SwiftInjectionExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftInjectionExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15FFF9D31CCC876000767A0F /* SwiftInjectionExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftInjectionExampleUITests.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		15FFF9C71CCC876000767A0F /* SwiftInjectionExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				15FFF9C81CCC876000767A0F /* SwiftInjectionExampleTests.swift */,
+				15FFF9C81CCC876000767A0F /* ViewControllerTests.swift */,
 				15FFF9CA1CCC876000767A0F /* Info.plist */,
 			);
 			path = SwiftInjectionExampleTests;
@@ -341,7 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15FFF9C91CCC876000767A0F /* SwiftInjectionExampleTests.swift in Sources */,
+				15FFF9C91CCC876000767A0F /* ViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

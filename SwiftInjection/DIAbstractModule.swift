@@ -8,11 +8,9 @@
 
 public class DIAbstractModule {
 	
-	public typealias BindingClosure = Void->AnyObject
-	
 	public init() { }
 	
-	public func bind<T>(type: T.Type, asSingleton: Bool = false, closure: BindingClosure) {
+	public func bind<T>(type: T.Type, asSingleton: Bool = false, closure: Void->AnyObject) {
 		DIContainer.instance.bind(type, asSingleton: asSingleton, closure: closure)
 	}
 	

@@ -11,11 +11,10 @@ public func inject<T>(type: T.Type) -> T {
 }
 
 public class DIContainer {
-	
+
 	public static let instance = DIContainer()
 	public typealias BindingClosure = Void->AnyObject
-	private var bindingDictionary = [String: BindingClosure]()
-	private var singletonInstance = [String: AnyObject]()
+	private var bindingDictionary = [String: DIBindingInfo]()
 	
 	/**
 	Adds all binding from module to DIContainer
@@ -36,27 +35,17 @@ public class DIContainer {
 	public func resolve<T>(type: T.Type) -> T {
 		let typeString = String(type)
 		
-		if let singletonInstance = singletonInstance[typeString] {
-			if let singletonInstance = singletonInstance as? T {
-				return singletonInstance
-			}
-			else {
-				fatalError("Invalid object type for binding \(typeString)")
-			}
-		}
-		else {
-			if let closure = bindingDictionary[typeString] {
-				let result = closure()
-				
-				if let result = closure() as? T {
-					return result
-				}
-				
-				fatalError("Invalid object type \(String(result.dynamicType)) for binding \(typeString)")
+		if let bindingInfo = bindingDictionary[typeString] {
+			let result = bindingInfo.provideInstance()
+			
+			if let result = result as? T {
+				return result
 			}
 			
-			fatalError("No binding found for \(typeString)")
+			fatalError("Invalid object type \(String(result.dynamicType)) for binding \(typeString)")
 		}
+		
+		fatalError("No binding found for \(typeString)")
 	}
 	
 	/**
@@ -74,12 +63,7 @@ public class DIContainer {
 			fatalError("Binding for \(typeString) already exists")
 		}
 		
-		if asSingleton {
-			singletonInstance[typeString] = closure()
-		}
-		else {
-			bindingDictionary[typeString] = closure
-		}
+		bindingDictionary[typeString] = DIBindingInfo(closure: closure, asSingleton: asSingleton)
 	}
 
 }

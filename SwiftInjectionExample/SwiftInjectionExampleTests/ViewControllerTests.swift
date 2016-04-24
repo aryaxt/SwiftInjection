@@ -9,7 +9,7 @@
 import XCTest
 @testable import SwiftInjectionExample
 
-class SwiftInjectionExampleTests: XCTestCase {
+class ViewControllerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
