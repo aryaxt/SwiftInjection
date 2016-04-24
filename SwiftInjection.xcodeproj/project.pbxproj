@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15560AB81CCD514A00888CAD /* DINamedBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15560AB71CCD514A00888CAD /* DINamedBinding.swift */; };
 		15FFF96A1CCC85EA00767A0F /* SwiftInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = 15FFF9691CCC85EA00767A0F /* SwiftInjection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		15FFF9711CCC85EA00767A0F /* SwiftInjection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15FFF9661CCC85EA00767A0F /* SwiftInjection.framework */; };
 		15FFF9971CCC86F900767A0F /* DIAbstractModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF9941CCC86F900767A0F /* DIAbstractModule.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15560AB71CCD514A00888CAD /* DINamedBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DINamedBinding.swift; sourceTree = "<group>"; };
 		15FFF9661CCC85EA00767A0F /* SwiftInjection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftInjection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15FFF9691CCC85EA00767A0F /* SwiftInjection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftInjection.h; sourceTree = "<group>"; };
 		15FFF96B1CCC85EA00767A0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				15FFF9951CCC86F900767A0F /* DIContainer.swift */,
 				15FFF9961CCC86F900767A0F /* DIModule.swift */,
 				15FFFA161CCD24D800767A0F /* DIBindingProvider.swift */,
+				15560AB71CCD514A00888CAD /* DINamedBinding.swift */,
 				15FFF96B1CCC85EA00767A0F /* Info.plist */,
 			);
 			path = SwiftInjection;
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15FFF9981CCC86F900767A0F /* DIContainer.swift in Sources */,
+				15560AB81CCD514A00888CAD /* DINamedBinding.swift in Sources */,
 				15FFF9971CCC86F900767A0F /* DIAbstractModule.swift in Sources */,
 				15FFFA171CCD24D800767A0F /* DIBindingProvider.swift in Sources */,
 				15FFF9991CCC86F900767A0F /* DIModule.swift in Sources */,
