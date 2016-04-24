@@ -9,7 +9,7 @@ public class AppModule: DIAbstractModule, DIModule {
 		bind(DatabaseAdapter.self) { MySqlAdapter() }
 		bind(UserStorage.self) { UserStorage() }
 		bind(Session.self, asSingleton: true) { Session() }
-		bind(NSUserDefaults.self, asSingleton: false) { NSUserDefaults.standardUserDefaults() }
+		bind(NSUserDefaults.self) { NSUserDefaults.standardUserDefaults() }
 	}
 }
 
