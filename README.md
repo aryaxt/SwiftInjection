@@ -83,3 +83,17 @@ bind(UserStorage.self) { UserStorage() }
 // Here we get a user storage that is using MySqlAdapter
 let userStorage = inject(UserStorage.self)
 ```
+
+#### Chain of Responssibilities
+```swift
+class ViewController: UIViewController {
+	// Injects all instances of AnalyticsTracker protocol (GoogleAnalyticsTracker & AmplitudeAnalyticsTracker)
+	let analyticsTrackers = injectAll(AnalyticsTracker.self)
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		userDeanalyticsTrackers.forEach { $0.trackEvent("HomePage") }
+	}
+}
+```
+
