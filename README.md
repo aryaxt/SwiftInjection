@@ -88,6 +88,7 @@ let userStorage = inject(UserStorage.self)
 ```swift
 class ViewController: UIViewController {
 	// Injects all instances of AnalyticsTracker protocol (GoogleAnalyticsTracker & AmplitudeAnalyticsTracker)
+	// analyticsTrackers type is [AnalyticsTracker]
 	let analyticsTrackers = injectAll(AnalyticsTracker.self)
 	
 	override func viewDidLoad() {
