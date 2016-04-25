@@ -93,7 +93,7 @@ class ViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		userDeanalyticsTrackers.forEach { $0.trackEvent("HomePage") }
+		analyticsTrackers.forEach { $0.trackEvent("HomePage") }
 	}
 }
 ```
