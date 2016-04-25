@@ -1,6 +1,7 @@
 # SwiftInjection
 [![Build Status](https://api.travis-ci.org/aryaxt/SwiftInjection.svg)](https://api.travis-ci.org/aryaxt/SwiftInjection)
 [![Version](http://cocoapod-badges.herokuapp.com/v/SwiftInjection/badge.png)](http://cocoadocs.org/docsets/SwiftInjection)
+
 A dependency container for Swift
 
 #### Setup
