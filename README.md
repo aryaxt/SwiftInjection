@@ -1,5 +1,5 @@
 # SwiftInjection
-
+[![Build Status](https://api.travis-ci.org/aryaxt/SwiftInjection.svg)](https://api.travis-ci.org/aryaxt/SwiftInjection)
 A dependency container for Swift
 
 #### Setup
