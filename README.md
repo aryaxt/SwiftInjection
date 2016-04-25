@@ -84,7 +84,7 @@ bind(UserStorage.self) { UserStorage() }
 let userStorage = inject(UserStorage.self)
 ```
 
-#### Chain of Responssibilities
+#### Chain of Responsibilities
 ```swift
 class ViewController: UIViewController {
 	// Injects all instances of AnalyticsTracker protocol (GoogleAnalyticsTracker & AmplitudeAnalyticsTracker)
