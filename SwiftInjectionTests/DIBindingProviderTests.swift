@@ -26,10 +26,12 @@ class DIBindingProviderTests: XCTestCase {
 	}
 	
 	func testprovideAllInstancesShouldReturnAllBindings() {
-		bindingProvider.addBinding({ return 1 }, named: "name1", asSingleton: false)
-		bindingProvider.addBinding({ return 2 }, named: "name2", asSingleton: false)
+		bindingProvider.addBinding({ return 100 }, named: "name1", asSingleton: false)
+		bindingProvider.addBinding({ return 200 }, named: "name2", asSingleton: false)
 		XCTAssertTrue(bindingProvider.provideAllInstances().count == 2)
-		XCTAssertTrue((bindingProvider.provideAllInstances() as? [Int])!.contains(1))
-		XCTAssertTrue((bindingProvider.provideAllInstances() as? [Int])!.contains(2))
+        
+        let allNumbers = bindingProvider.provideAllInstances().flatMap { $0 as? Int }
+		XCTAssertTrue(allNumbers.contains(100))
+		XCTAssertTrue(allNumbers.contains(200))
 	}
 }

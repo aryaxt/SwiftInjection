@@ -9,18 +9,18 @@
 import Foundation
 
 internal class DINamedBinding {
-	private let closure: Void->AnyObject
+	private let closure: Void->Any
 	private let asSingleton: Bool
-	private var singletonInstance: AnyObject?
+	private var singletonInstance: Any?
 	
-	init(closure: Void->AnyObject, asSingleton: Bool) {
+	init(closure: Void->Any, asSingleton: Bool) {
 		self.closure = closure
 		self.asSingleton = asSingleton
 	}
 }
 
 extension DINamedBinding {
-	func provideInstance() -> AnyObject {
+	func provideInstance() -> Any {
 		if asSingleton {
 			if let singletonInstance = singletonInstance {
 				return singletonInstance

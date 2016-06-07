@@ -17,7 +17,7 @@ public func injectAll<T>(type: T.Type) -> [T] {
 public class DIContainer {
 
 	public static let instance = DIContainer()
-	public typealias BindingClosure = Void->AnyObject
+	public typealias BindingClosure = Void->Any
 	private var bindingDictionary = [String: DIBindingProvider]()
 	
 	/**

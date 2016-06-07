@@ -13,12 +13,12 @@ internal class DIBindingProvider {
 	private var namedBindings = [String: DINamedBinding]()
 	private static let defaultBindingName = "default"
 	
-	func addBinding(closure: Void->AnyObject, named: String? = nil, asSingleton: Bool) {
+	func addBinding(closure: Void->Any, named: String? = nil, asSingleton: Bool) {
 		let named = named ?? DIBindingProvider.defaultBindingName
 		namedBindings[named] = DINamedBinding(closure: closure, asSingleton: asSingleton)
 	}
 
-	func provideInstance(named: String? = nil) -> AnyObject {
+	func provideInstance(named: String? = nil) -> Any {
 		let named = named ?? DIBindingProvider.defaultBindingName
 		
 		if let namedBinding = namedBindings[named] {
@@ -28,7 +28,7 @@ internal class DIBindingProvider {
 		fatalError("Did not find binding named \(named)")
 	}
 	
-	func provideAllInstances() -> [AnyObject] {
+	func provideAllInstances() -> [Any] {
 		return namedBindings.values.map { $0.provideInstance() }
 	}
 }

@@ -37,6 +37,12 @@ class DIContainerTests: XCTestCase {
 		let instance2 = container.resolve(RegularPump.self)
 		XCTAssertTrue(instance1 === instance2)
 	}
+    
+    func testShouldReturnCorrectImplementationForStructs() {
+        container.bind(SomeStruct.self) { SomeStruct() }
+        let instance = container.resolve(SomeStruct.self)
+        XCTAssertTrue(instance.dynamicType == SomeStruct.self)
+    }
 	
 	func testShouldReturnCorrectNamedInstance() {
 		let regularIdentifier = "regular"

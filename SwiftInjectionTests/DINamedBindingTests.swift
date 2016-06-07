@@ -18,12 +18,12 @@ class DINamedBindingTests: XCTestCase {
 	
 	func testNamedBindingShouldReturnDifferentInstancesForNonSingleton() {
 		let binding = DINamedBinding(closure: { RegularPump() }, asSingleton: false)
-		XCTAssertTrue(binding.provideInstance() !== binding.provideInstance())
+		XCTAssertTrue(binding.provideInstance() as? AnyObject !== binding.provideInstance() as? AnyObject )
 	}
 	
 	func testNamedBindingShouldReturnSameInstancesForSingleton() {
 		let binding = DINamedBinding(closure: { RegularPump() }, asSingleton: true)
-		XCTAssertTrue(binding.provideInstance() === binding.provideInstance())
+		XCTAssertTrue(binding.provideInstance() as? AnyObject === binding.provideInstance() as? AnyObject)
 	}
 	
 }
