@@ -23,6 +23,7 @@
 		15FFF9A61CCC871900767A0F /* RegularPump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF9A01CCC871900767A0F /* RegularPump.swift */; };
 		15FFFA171CCD24D800767A0F /* DIBindingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA161CCD24D800767A0F /* DIBindingProvider.swift */; };
 		15FFFA1F1CCD3D2A00767A0F /* TurboPump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA1E1CCD3D2A00767A0F /* TurboPump.swift */; };
+		9247EE351D072B8E0006A695 /* SomeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9247EE341D072B8E0006A695 /* SomeStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		15FFF9A01CCC871900767A0F /* RegularPump.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularPump.swift; sourceTree = "<group>"; };
 		15FFFA161CCD24D800767A0F /* DIBindingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIBindingProvider.swift; sourceTree = "<group>"; };
 		15FFFA1E1CCD3D2A00767A0F /* TurboPump.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurboPump.swift; sourceTree = "<group>"; };
+		9247EE341D072B8E0006A695 /* SomeStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SomeStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				15FFF99F1CCC871900767A0F /* Pump.swift */,
 				15FFF9A01CCC871900767A0F /* RegularPump.swift */,
 				15FFFA1E1CCD3D2A00767A0F /* TurboPump.swift */,
+				9247EE341D072B8E0006A695 /* SomeStruct.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				15FFF9A51CCC871900767A0F /* Pump.swift in Sources */,
 				15FFF9A21CCC871900767A0F /* CoffeeMaker.swift in Sources */,
 				15FFF9A31CCC871900767A0F /* ElectricHeater.swift in Sources */,
+				9247EE351D072B8E0006A695 /* SomeStruct.swift in Sources */,
 				15560ABA1CCD910B00888CAD /* DIBindingProviderTests.swift in Sources */,
 				15560ABC1CCD93EE00888CAD /* DINamedBindingTests.swift in Sources */,
 				15FFF9A61CCC871900767A0F /* RegularPump.swift in Sources */,
