@@ -8,10 +8,16 @@
 
 import Foundation
 
-public class GithubHttpClient: HttpClient, GithubClient {
+public class GithubHttpClient: GithubClient {
+	
+	private let client: Client
+	
+	public init(client: Client) {
+		self.client = client
+	}
 	
 	public func fetchRepos(user user: String, completion: Result<[Repository]>->Void) -> NSURLSessionTask {
-		return fetchObjects(type: Repository.self, path: "users/\(user)/repos", method: .Get, completion: completion)
+		return client.fetchObjects(type: Repository.self, path: "users/\(user)/repos", method: .Get, completion: completion)
 	}
 	
 }

@@ -7,5 +7,5 @@
 //
 
 public protocol DIModule {
-	func load()
+	func load(container container: DIContainer)
 }

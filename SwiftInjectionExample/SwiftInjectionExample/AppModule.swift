@@ -10,8 +10,9 @@ import SwiftInjection
 
 public class AppModule: DIAbstractModule, DIModule {
 	
-	public func load() {
-		bind(GithubClient.self) { GithubHttpClient(baseUrl: "https://api.github.com") }
+	public func load(container container: DIContainer) {
+		bind(Client.self) { HttpClient(baseUrl: "https://api.github.com") }
+		bind(GithubClient.self) { GithubHttpClient(client: container.resolve(Client.self)) }
 		bind(NSUserDefaults.self, asSingleton: false) { NSUserDefaults.standardUserDefaults() }
 		bind(AnalyticsTracker.self, named: GoogleAnalyticsTracker.analyticsIdentifier()) { GoogleAnalyticsTracker() }
 		bind(AnalyticsTracker.self, named: AmplitudeAnalyticsTracker.analyticsIdentifier()) { AmplitudeAnalyticsTracker() }
