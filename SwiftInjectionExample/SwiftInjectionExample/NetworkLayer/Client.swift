@@ -22,7 +22,7 @@ public enum ClientError: ErrorType {
 	case InvalidResponse
 }
 
-protocol Client {
+public protocol Client {
 	func fetchObject<T: Mappable>(type type: T.Type, path: String, method: HttpMethod, completion: Result<T>->Void) -> NSURLSessionDataTask
 	func fetchObjects<T: Mappable>(type type: T.Type, path: String, method: HttpMethod, completion: Result<[T]>->Void) -> NSURLSessionDataTask
 }

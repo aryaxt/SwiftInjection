@@ -26,7 +26,7 @@ public class DIContainer {
 	- parameter module: A subclass of DIAbstractModule that implements DIModule
 	*/
 	public func addModule<T: DIAbstractModule where T: DIModule>(module: T) {
-		module.load()
+		module.load(container: self)
 	}
 	
 	/**
