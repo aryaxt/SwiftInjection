@@ -102,3 +102,5 @@ class ViewController: UIViewController {
 }
 ```
 
+⚠️ SwiftInjection is stable, but there will be a lot of breaking changes as this is work in progress
+
