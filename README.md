@@ -67,7 +67,7 @@ class MySqlAdapter: DatabaseAdapter {
 class UserStorage {
    let databaseAdapter: DatabaseAdapter
    
-   init(databaseAdapter: DatabaseAdapter = inject(DatabaseAdapter.self)) {
+   init(databaseAdapter: DatabaseAdapter) {
       self.databaseAdapter = databaseAdapter
    }
    
