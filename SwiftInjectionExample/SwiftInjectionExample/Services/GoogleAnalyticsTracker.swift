@@ -14,7 +14,7 @@ public class GoogleAnalyticsTracker: AnalyticsTracker {
 		return "GoogleAnalytics"
 	}
 	
-	public func trackEvent(name name: String, dictionary: [NSObject : AnyObject]? = nil) {
+	public func trackEvent(name: String, dictionary: [NSObject : AnyObject]? = nil) {
 		print("\(GoogleAnalyticsTracker.analyticsIdentifier()): Tracking event with name \(name)")
 	}
 	

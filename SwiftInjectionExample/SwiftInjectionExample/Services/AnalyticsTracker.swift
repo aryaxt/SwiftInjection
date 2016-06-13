@@ -9,6 +9,6 @@
 import Foundation
 
 public protocol AnalyticsTracker {
-	func trackEvent(name name: String, dictionary: [NSObject: AnyObject]?)
+	func trackEvent(name: String, dictionary: [NSObject: AnyObject]?)
 	static func analyticsIdentifier() -> String
 }

@@ -14,7 +14,7 @@ public class AmplitudeAnalyticsTracker: AnalyticsTracker {
 		return "Amplitude"
 	}
 	
-	public func trackEvent(name name: String, dictionary: [NSObject : AnyObject]? = nil) {
+	public func trackEvent(name: String, dictionary: [NSObject : AnyObject]? = nil) {
 		print("\(AmplitudeAnalyticsTracker.analyticsIdentifier()): Tracking event with name \(name)")
 	}
 	

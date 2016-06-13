@@ -8,7 +8,7 @@
 
 public enum Result<T> {
 	case Success(T)
-	case Failure(ErrorType)
+	case Failure(ErrorProtocol)
 	
 	public var isError: Bool {
 		switch self {

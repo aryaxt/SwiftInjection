@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol GithubClient {
-	func fetchRepos(user user: String, completion: Result<[Repository]>->Void) -> NSURLSessionTask
+	@discardableResult func fetchRepos(user: String, completion: (Result<[Repository]>)->Void) -> URLSessionTask
 }

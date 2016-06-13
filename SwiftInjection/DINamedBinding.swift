@@ -9,11 +9,11 @@
 import Foundation
 
 internal class DINamedBinding {
-	private let closure: Void->Any
+	private let closure: (Void)->Any
 	private let asSingleton: Bool
 	private var singletonInstance: Any?
 	
-	init(closure: Void->Any, asSingleton: Bool) {
+	init(closure: (Void)->Any, asSingleton: Bool) {
 		self.closure = closure
 		self.asSingleton = asSingleton
 	}

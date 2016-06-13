@@ -11,7 +11,7 @@ import Foundation
 public class HttpClient: Client {
 	
 	private let baseUrl: String
-	private let timeout: NSTimeInterval = 60
+	private let timeout: TimeInterval = 60
 	
 	init(baseUrl: String) {
 		self.baseUrl = baseUrl
@@ -19,16 +19,16 @@ public class HttpClient: Client {
 	
 	// MARK: - Public -
 	
-	public func fetchObject<T: Mappable>(type type: T.Type, path: String, method: HttpMethod, completion: Result<T> -> Void) -> NSURLSessionDataTask {
-		let request = requestWithPath(path, method: method)
+	public func fetchObject<T: Mappable>(type: T.Type, path: String, method: HttpMethod, completion: (Result<T>)->Void) -> URLSessionDataTask {
+		let request = requestWithPath(path: path, method: method)
 		
-		let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+		let task = URLSession.shared().dataTask(with: request as URLRequest) { data, response, error in
 			if let error = error {
 				completion(Result.Failure(error))
 			}
 			else {
 				guard let data = data else { completion(Result.Failure(ClientError.MissingResponse)); return }
-				guard let dictionary = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? [NSObject: AnyObject] else { completion(Result.Failure(ClientError.InvalidResponse)); return }
+				guard let dictionary = NSKeyedUnarchiver.unarchiveObject(with: data) as? [NSObject: AnyObject] else { completion(Result.Failure(ClientError.InvalidResponse)); return }
 				guard let object = T(json: dictionary) else { completion(Result.Failure(ClientError.MappingFaild)); return }
 				completion(Result.Success(object))
 			}
@@ -38,10 +38,10 @@ public class HttpClient: Client {
 		return task
 	}
 	
-	public func fetchObjects<T: Mappable>(type type: T.Type, path: String, method: HttpMethod, completion: Result<[T]> -> Void) -> NSURLSessionDataTask {
-		let request = requestWithPath(path, method: method)
+	public func fetchObjects<T: Mappable>(type: T.Type, path: String, method: HttpMethod, completion: (Result<[T]>)->Void) -> URLSessionDataTask {
+		let request = requestWithPath(path: path, method: method)
 		
-		let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+		let task = URLSession.shared().dataTask(with: request) { data, response, error in
 			if let error = error {
 				completion(Result.Failure(error))
 			}
@@ -49,7 +49,7 @@ public class HttpClient: Client {
 				guard let data = data else { completion(Result.Failure(ClientError.MissingResponse)); return }
 
 				do {
-					let object = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
+					let object = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
 					guard let dicts = object as? [[NSObject: AnyObject]] else { completion(Result.Failure(ClientError.InvalidResponse)); return }
 					let objects = dicts.flatMap { T(json: $0) }
 					completion(Result.Success(objects))
@@ -66,14 +66,13 @@ public class HttpClient: Client {
 	
 	// MARK: - Private -
 	
-	private func requestWithPath(path: String, method: HttpMethod) -> NSURLRequest {
-		let request = NSMutableURLRequest(
-			URL: NSURL(string: "\(baseUrl)/\(path)")!,
-			cachePolicy: .ReloadIgnoringCacheData,
+	private func requestWithPath(path: String, method: HttpMethod) -> URLRequest {
+		var request = URLRequest(
+			url: NSURL(string: "\(baseUrl)/\(path)") as! URL,
+			cachePolicy: .reloadIgnoringCacheData,
 			timeoutInterval: timeout)
-		request.HTTPMethod = method.rawValue
+		request.httpMethod = method.rawValue
 		return request
-		
 	}
 
 }

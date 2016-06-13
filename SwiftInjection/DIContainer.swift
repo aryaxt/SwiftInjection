@@ -7,17 +7,17 @@
 //
 
 public func inject<T>(type: T.Type, named: String? = nil) -> T {
-	return DIContainer.instance.resolve(type)
+	return DIContainer.instance.resolve(type: type)
 }
 
 public func injectAll<T>(type: T.Type) -> [T] {
-	return DIContainer.instance.resolveAll(type)
+	return DIContainer.instance.resolveAll(type: type)
 }
 
 public class DIContainer {
 
 	public static let instance = DIContainer()
-	public typealias BindingClosure = Void->Any
+	public typealias BindingClosure = (Void)->Any
 	private var bindingDictionary = [String: DIBindingProvider]()
 	
 	/**
@@ -26,7 +26,7 @@ public class DIContainer {
 	- parameter module: A subclass of DIAbstractModule that implements DIModule
 	*/
 	public func addModule<T: DIModule>(module: T) {
-		module.load(self)
+		module.load(container: self)
 	}
 	
 	/**
@@ -40,7 +40,7 @@ public class DIContainer {
 		let typeString = String(type)
 		
 		if let bindingProvider = bindingDictionary[typeString] {
-			let result = bindingProvider.provideInstance(named)
+			let result = bindingProvider.provideInstance(named: named)
 			
 			if let result = result as? T {
 				return result
@@ -80,7 +80,7 @@ public class DIContainer {
 	- parameter closure:     closure to provide an injection object
 	*/
 	public func bind<T: AnyObject>(type: T.Type, named: String? = nil, asSingleton: Bool = false, closure: BindingClosure) {
-		addBinding(type, named: named, asSingleton: asSingleton, closure: closure)
+		addBinding(type: type, named: named, asSingleton: asSingleton, closure: closure)
 	}
 	
 	/**
@@ -92,7 +92,7 @@ public class DIContainer {
 	- parameter closure:     closure to provide an injection object
 	*/
 	public func bind<T: Any>(type: T.Type, named: String? = nil, closure: BindingClosure) {
-		addBinding(type, named: named, asSingleton: false, closure: closure)
+		addBinding(type: type, named: named, asSingleton: false, closure: closure)
 	}
 	
 	// MARK: - Private -
@@ -109,7 +109,7 @@ public class DIContainer {
 			bindingDictionary[typeString] = bindingProvider
 		}
 		
-		bindingProvider.addBinding(closure, named: named, asSingleton: asSingleton)
+		bindingProvider.addBinding(closure: closure, named: named, asSingleton: asSingleton)
 	}
 
 }

@@ -15,7 +15,7 @@ public enum HttpMethod: String {
 	case Delete = "DELETE"
 }
 
-public enum ClientError: ErrorType {
+public enum ClientError: ErrorProtocol {
 	case InvalidUrl
 	case MissingResponse
 	case MappingFaild
@@ -23,6 +23,6 @@ public enum ClientError: ErrorType {
 }
 
 public protocol Client {
-	func fetchObject<T: Mappable>(type type: T.Type, path: String, method: HttpMethod, completion: Result<T>->Void) -> NSURLSessionDataTask
-	func fetchObjects<T: Mappable>(type type: T.Type, path: String, method: HttpMethod, completion: Result<[T]>->Void) -> NSURLSessionDataTask
+	func fetchObject<T: Mappable>(type: T.Type, path: String, method: HttpMethod, completion: (Result<T>)->Void) -> URLSessionDataTask
+	func fetchObjects<T: Mappable>(type: T.Type, path: String, method: HttpMethod, completion: (Result<[T]>)->Void) -> URLSessionDataTask
 }

@@ -16,7 +16,7 @@ public class GithubHttpClient: GithubClient {
 		self.client = client
 	}
 	
-	public func fetchRepos(user user: String, completion: Result<[Repository]>->Void) -> NSURLSessionTask {
+	public func fetchRepos(user: String, completion: (Result<[Repository]>)->Void) -> URLSessionTask {
 		return client.fetchObjects(type: Repository.self, path: "users/\(user)/repos", method: .Get, completion: completion)
 	}
 	

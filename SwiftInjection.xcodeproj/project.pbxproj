@@ -190,14 +190,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Aryan Ghassemi";
 				TargetAttributes = {
 					15FFF9651CCC85EA00767A0F = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 24FGDP9KJW;
+						DevelopmentTeamName = "Aryan Ghassemi";
+						LastSwiftMigration = 0800;
 					};
 					15FFF96F1CCC85EA00767A0F = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 24FGDP9KJW;
+						DevelopmentTeamName = "Aryan Ghassemi";
 					};
 				};
 			};
@@ -383,6 +388,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -401,6 +407,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aryaxt.SwiftInjection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -421,6 +429,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aryaxt.SwiftInjectionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};

@@ -21,13 +21,13 @@ class DIBindingProviderTests: XCTestCase {
 	func testAddBindingShouldStoreTheCorrectBindingWithName() {
 		let value = "asdasd"
 		let bindingName = "bindingNumber1"
-		bindingProvider.addBinding({ return value }, named: bindingName, asSingleton: false)
-		XCTAssertTrue(bindingProvider.provideInstance(bindingName) as? String == value)
+		bindingProvider.addBinding(closure: { return value }, named: bindingName, asSingleton: false)
+		XCTAssertTrue(bindingProvider.provideInstance(named: bindingName) as? String == value)
 	}
 	
 	func testprovideAllInstancesShouldReturnAllBindings() {
-		bindingProvider.addBinding({ return 100 }, named: "name1", asSingleton: false)
-		bindingProvider.addBinding({ return 200 }, named: "name2", asSingleton: false)
+		bindingProvider.addBinding(closure: { return 100 }, named: "name1", asSingleton: false)
+		bindingProvider.addBinding(closure: { return 200 }, named: "name2", asSingleton: false)
 		XCTAssertTrue(bindingProvider.provideAllInstances().count == 2)
         
         let allNumbers = bindingProvider.provideAllInstances().flatMap { $0 as? Int }

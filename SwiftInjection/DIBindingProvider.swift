@@ -13,7 +13,7 @@ internal class DIBindingProvider {
 	private var namedBindings = [String: DINamedBinding]()
 	private static let defaultBindingName = "default"
 	
-	func addBinding(closure: Void->Any, named: String? = nil, asSingleton: Bool) {
+	func addBinding(closure: (Void)->Any, named: String? = nil, asSingleton: Bool) {
 		let named = named ?? DIBindingProvider.defaultBindingName
 		namedBindings[named] = DINamedBinding(closure: closure, asSingleton: asSingleton)
 	}
