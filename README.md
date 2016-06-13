@@ -7,9 +7,9 @@ A dependency container for Swift
 #### Setup
 ```swift
 public class AppModule: DIAbstractModule, DIModule {
-	public func load() {
+	public func load(container: DIContainer) {
 		bind(DatabaseAdapter.self) { MySqlAdapter() }
-		bind(UserStorage.self) { UserStorage() }
+		bind(UserStorage.self) { UserStorage(databaseAdapter: container.resolve(DatabaseAdapter.self)) }
 		bind(Session.self, asSingleton: true) { Session() }
 		bind(NSUserDefaults.self) { NSUserDefaults.standardUserDefaults() }
 	}
