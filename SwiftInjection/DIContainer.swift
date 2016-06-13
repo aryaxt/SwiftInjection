@@ -84,7 +84,7 @@ public class DIContainer {
 	}
 	
 	/**
-	Binds a class.struct or protocol to an instance provided through a closure
+	Binds a class/struct or protocol to an instance provided through a closure
 	Any can refer to structs (value based) which are not compatible with singleton
 	
 	- parameter type:        Protocol or a Class
