@@ -77,8 +77,12 @@ class UserStorage {
 }
 
 // Add binding in module
-bind(DatabaseAdapter.self) { MySqlAdapter() }
-bind(UserStorage.self) { UserStorage() }
+public class AppModule: DIAbstractModule, DIModule {
+	public func load(container: DIContainer) {
+		bind(DatabaseAdapter.self) { MySqlAdapter() }
+		bind(UserStorage.self) { UserStorage(databaseAdapter: container.resolve(DatabaseAdapter.self)) }
+	}
+}
 
 // Here we get a user storage that is using MySqlAdapter
 let userStorage = inject(UserStorage.self)
