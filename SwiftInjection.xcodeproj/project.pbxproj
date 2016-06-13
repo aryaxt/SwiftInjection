@@ -12,7 +12,6 @@
 		15560ABC1CCD93EE00888CAD /* DINamedBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15560ABB1CCD93EE00888CAD /* DINamedBindingTests.swift */; };
 		15FFF96A1CCC85EA00767A0F /* SwiftInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = 15FFF9691CCC85EA00767A0F /* SwiftInjection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		15FFF9711CCC85EA00767A0F /* SwiftInjection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15FFF9661CCC85EA00767A0F /* SwiftInjection.framework */; };
-		15FFF9971CCC86F900767A0F /* DIAbstractModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF9941CCC86F900767A0F /* DIAbstractModule.swift */; };
 		15FFF9981CCC86F900767A0F /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF9951CCC86F900767A0F /* DIContainer.swift */; };
 		15FFF9991CCC86F900767A0F /* DIModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF9961CCC86F900767A0F /* DIModule.swift */; };
 		15FFF9A11CCC871900767A0F /* DIContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF99A1CCC871900767A0F /* DIContainerTests.swift */; };
@@ -45,7 +44,6 @@
 		15FFF96B1CCC85EA00767A0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15FFF9701CCC85EA00767A0F /* SwiftInjectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftInjectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15FFF9771CCC85EA00767A0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15FFF9941CCC86F900767A0F /* DIAbstractModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIAbstractModule.swift; sourceTree = "<group>"; };
 		15FFF9951CCC86F900767A0F /* DIContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		15FFF9961CCC86F900767A0F /* DIModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIModule.swift; sourceTree = "<group>"; };
 		15FFF99A1CCC871900767A0F /* DIContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIContainerTests.swift; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				15FFF9691CCC85EA00767A0F /* SwiftInjection.h */,
-				15FFF9941CCC86F900767A0F /* DIAbstractModule.swift */,
 				15FFF9951CCC86F900767A0F /* DIContainer.swift */,
 				15FFF9961CCC86F900767A0F /* DIModule.swift */,
 				15FFFA161CCD24D800767A0F /* DIBindingProvider.swift */,
@@ -246,7 +243,6 @@
 			files = (
 				15FFF9981CCC86F900767A0F /* DIContainer.swift in Sources */,
 				15560AB81CCD514A00888CAD /* DINamedBinding.swift in Sources */,
-				15FFF9971CCC86F900767A0F /* DIAbstractModule.swift in Sources */,
 				15FFFA171CCD24D800767A0F /* DIBindingProvider.swift in Sources */,
 				15FFF9991CCC86F900767A0F /* DIModule.swift in Sources */,
 			);

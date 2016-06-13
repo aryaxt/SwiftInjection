@@ -6,12 +6,12 @@ A dependency container for Swift
 
 #### Setup
 ```swift
-public class AppModule: DIAbstractModule, DIModule {
+public class AppModule: DIModule {
 	public func load(container: DIContainer) {
-		bind(DatabaseAdapter.self) { MySqlAdapter() }
-		bind(UserStorage.self) { UserStorage(databaseAdapter: container.resolve(DatabaseAdapter.self)) }
-		bind(Session.self, asSingleton: true) { Session() }
-		bind(NSUserDefaults.self) { NSUserDefaults.standardUserDefaults() }
+		container.bind(DatabaseAdapter.self) { MySqlAdapter() }
+		container.bind(UserStorage.self) { UserStorage(databaseAdapter: container.resolve(DatabaseAdapter.self)) }
+		container.bind(Session.self, asSingleton: true) { Session() }
+		container.bind(NSUserDefaults.self) { NSUserDefaults.standardUserDefaults() }
 	}
 }
 
@@ -77,10 +77,10 @@ class UserStorage {
 }
 
 // Add binding in module
-public class AppModule: DIAbstractModule, DIModule {
+public class AppModule: DIModule {
 	public func load(container: DIContainer) {
-		bind(DatabaseAdapter.self) { MySqlAdapter() }
-		bind(UserStorage.self) { UserStorage(databaseAdapter: container.resolve(DatabaseAdapter.self)) }
+		container.bind(DatabaseAdapter.self) { MySqlAdapter() }
+		container.bind(UserStorage.self) { UserStorage(databaseAdapter: container.resolve(DatabaseAdapter.self)) }
 	}
 }
 

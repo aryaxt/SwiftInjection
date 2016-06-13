@@ -25,8 +25,8 @@ public class DIContainer {
 	
 	- parameter module: A subclass of DIAbstractModule that implements DIModule
 	*/
-	public func addModule<T: DIAbstractModule where T: DIModule>(module: T) {
-		module.load(container: self)
+	public func addModule<T: DIModule>(module: T) {
+		module.load(self)
 	}
 	
 	/**
@@ -73,13 +73,31 @@ public class DIContainer {
 	
 	/**
 	Binds a class or protocol to an instance provided through a closure
-	This method is marked as internal, instead of using this method, Subclass DIAbstractModule to implement binding
 	
 	- parameter type:        Protocol or a Class
+	- parameter named:		 A named dependency
 	- parameter asSingleton: if true DI will use a single instance wherever injected
 	- parameter closure:     closure to provide an injection object
 	*/
-	internal func bind<T>(type: T.Type, named: String? = nil, asSingleton: Bool = false, closure: BindingClosure) {
+	public func bind<T: AnyObject>(type: T.Type, named: String? = nil, asSingleton: Bool = false, closure: BindingClosure) {
+		addBinding(type, named: named, asSingleton: asSingleton, closure: closure)
+	}
+	
+	/**
+	Binds a class.struct or protocol to an instance provided through a closure
+	Any can refer to structs (value based) which are not compatible with singleton
+	
+	- parameter type:        Protocol or a Class
+	- parameter named:		 A named dependency
+	- parameter closure:     closure to provide an injection object
+	*/
+	public func bind<T: Any>(type: T.Type, named: String? = nil, closure: BindingClosure) {
+		addBinding(type, named: named, asSingleton: false, closure: closure)
+	}
+	
+	// MARK: - Private -
+	
+	private func addBinding<T>(type: T.Type, named: String?, asSingleton: Bool, closure: BindingClosure) {
 		let typeString = String(type)
 		let bindingProvider: DIBindingProvider
 		
