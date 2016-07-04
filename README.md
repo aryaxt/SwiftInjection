@@ -77,7 +77,7 @@ protocol GithubService { }
 
 protocol HttpService { }
 
-class GithubHttpClient: GithubClient {
+class GithubHttpClient: GithubService {
 	private let httpService: HttpService
 	public init(httpService: HttpService) {
 		self.httpService = httpService
