@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15041D121D2AD4020009610C /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15041D111D2AD4020009610C /* HttpMethod.swift */; };
+		15041D141D2AD4190009610C /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15041D131D2AD4190009610C /* ClientError.swift */; };
+		15041D161D2AD4840009610C /* Repository+Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15041D151D2AD4840009610C /* Repository+Mappable.swift */; };
 		15FFF9B41CCC876000767A0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF9B31CCC876000767A0F /* AppDelegate.swift */; };
 		15FFF9B61CCC876000767A0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF9B51CCC876000767A0F /* ViewController.swift */; };
 		15FFF9B91CCC876000767A0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15FFF9B71CCC876000767A0F /* Main.storyboard */; };
@@ -17,13 +20,13 @@
 		15FFF9EB1CCC886600767A0F /* AppModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFF9EA1CCC886600767A0F /* AppModule.swift */; };
 		15FFF9FE1CCC8A4900767A0F /* SwiftInjection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15FFF9FD1CCC8A4900767A0F /* SwiftInjection.framework */; };
 		15FFF9FF1CCC8A4900767A0F /* SwiftInjection.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 15FFF9FD1CCC8A4900767A0F /* SwiftInjection.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		15FFFA031CCC8E2700767A0F /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA021CCC8E2700767A0F /* Client.swift */; };
+		15FFFA031CCC8E2700767A0F /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA021CCC8E2700767A0F /* HttpService.swift */; };
 		15FFFA051CCC8E4100767A0F /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA041CCC8E4100767A0F /* HttpClient.swift */; };
 		15FFFA0B1CCC94BF00767A0F /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA0A1CCC94BF00767A0F /* Mappable.swift */; };
 		15FFFA0E1CCC990500767A0F /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA0D1CCC990500767A0F /* Repository.swift */; };
 		15FFFA101CCCA4F400767A0F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA0F1CCCA4F400767A0F /* Result.swift */; };
-		15FFFA141CCCA92900767A0F /* GithubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA121CCCA92900767A0F /* GithubClient.swift */; };
-		15FFFA151CCCA92900767A0F /* GithubHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA131CCCA92900767A0F /* GithubHttpClient.swift */; };
+		15FFFA141CCCA92900767A0F /* GithubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA121CCCA92900767A0F /* GithubService.swift */; };
+		15FFFA151CCCA92900767A0F /* GithubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA131CCCA92900767A0F /* GithubClient.swift */; };
 		15FFFA191CCD30B800767A0F /* AnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA181CCD30B800767A0F /* AnalyticsTracker.swift */; };
 		15FFFA1B1CCD315200767A0F /* GoogleAnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA1A1CCD315200767A0F /* GoogleAnalyticsTracker.swift */; };
 		15FFFA1D1CCD316300767A0F /* AmplitudeAnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFFA1C1CCD316300767A0F /* AmplitudeAnalyticsTracker.swift */; };
@@ -61,6 +64,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		15041D111D2AD4020009610C /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		15041D131D2AD4190009610C /* ClientError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
+		15041D151D2AD4840009610C /* Repository+Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Repository+Mappable.swift"; sourceTree = "<group>"; };
 		15FFF9B01CCC876000767A0F /* SwiftInjectionExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftInjectionExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15FFF9B31CCC876000767A0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15FFF9B51CCC876000767A0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,13 +82,13 @@
 		15FFF9D51CCC876000767A0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15FFF9EA1CCC886600767A0F /* AppModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppModule.swift; sourceTree = "<group>"; };
 		15FFF9FD1CCC8A4900767A0F /* SwiftInjection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = SwiftInjection.framework; path = "/Users/aryaxt/Library/Developer/Xcode/DerivedData/SwiftInjection-dyxagwodjjbkpibbflwuzzhryyrz/Build/Products/Debug-iphonesimulator/SwiftInjection.framework"; sourceTree = "<absolute>"; };
-		15FFFA021CCC8E2700767A0F /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		15FFFA021CCC8E2700767A0F /* HttpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
 		15FFFA041CCC8E4100767A0F /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		15FFFA0A1CCC94BF00767A0F /* Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mappable.swift; sourceTree = "<group>"; };
 		15FFFA0D1CCC990500767A0F /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		15FFFA0F1CCCA4F400767A0F /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		15FFFA121CCCA92900767A0F /* GithubClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubClient.swift; sourceTree = "<group>"; };
-		15FFFA131CCCA92900767A0F /* GithubHttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubHttpClient.swift; sourceTree = "<group>"; };
+		15FFFA121CCCA92900767A0F /* GithubService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubService.swift; sourceTree = "<group>"; };
+		15FFFA131CCCA92900767A0F /* GithubClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubClient.swift; sourceTree = "<group>"; };
 		15FFFA181CCD30B800767A0F /* AnalyticsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTracker.swift; sourceTree = "<group>"; };
 		15FFFA1A1CCD315200767A0F /* GoogleAnalyticsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalyticsTracker.swift; sourceTree = "<group>"; };
 		15FFFA1C1CCD316300767A0F /* AmplitudeAnalyticsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplitudeAnalyticsTracker.swift; sourceTree = "<group>"; };
@@ -173,10 +179,12 @@
 		15FFFA011CCC8E1A00767A0F /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
+				15FFFA021CCC8E2700767A0F /* HttpService.swift */,
+				15FFFA041CCC8E4100767A0F /* HttpClient.swift */,
 				15FFFA0F1CCCA4F400767A0F /* Result.swift */,
 				15FFFA0A1CCC94BF00767A0F /* Mappable.swift */,
-				15FFFA021CCC8E2700767A0F /* Client.swift */,
-				15FFFA041CCC8E4100767A0F /* HttpClient.swift */,
+				15041D111D2AD4020009610C /* HttpMethod.swift */,
+				15041D131D2AD4190009610C /* ClientError.swift */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				15FFFA0D1CCC990500767A0F /* Repository.swift */,
+				15041D151D2AD4840009610C /* Repository+Mappable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -192,8 +201,8 @@
 		15FFFA111CCCA92900767A0F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				15FFFA121CCCA92900767A0F /* GithubClient.swift */,
-				15FFFA131CCCA92900767A0F /* GithubHttpClient.swift */,
+				15FFFA121CCCA92900767A0F /* GithubService.swift */,
+				15FFFA131CCCA92900767A0F /* GithubClient.swift */,
 				15FFFA181CCD30B800767A0F /* AnalyticsTracker.swift */,
 				15FFFA1A1CCD315200767A0F /* GoogleAnalyticsTracker.swift */,
 				15FFFA1C1CCD316300767A0F /* AmplitudeAnalyticsTracker.swift */,
@@ -338,16 +347,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15041D141D2AD4190009610C /* ClientError.swift in Sources */,
+				15041D161D2AD4840009610C /* Repository+Mappable.swift in Sources */,
 				15FFFA051CCC8E4100767A0F /* HttpClient.swift in Sources */,
 				15FFF9B61CCC876000767A0F /* ViewController.swift in Sources */,
 				15FFFA1D1CCD316300767A0F /* AmplitudeAnalyticsTracker.swift in Sources */,
 				15FFFA0B1CCC94BF00767A0F /* Mappable.swift in Sources */,
-				15FFFA151CCCA92900767A0F /* GithubHttpClient.swift in Sources */,
+				15FFFA151CCCA92900767A0F /* GithubClient.swift in Sources */,
 				15FFFA1B1CCD315200767A0F /* GoogleAnalyticsTracker.swift in Sources */,
 				15FFF9B41CCC876000767A0F /* AppDelegate.swift in Sources */,
 				15FFFA101CCCA4F400767A0F /* Result.swift in Sources */,
-				15FFFA031CCC8E2700767A0F /* Client.swift in Sources */,
-				15FFFA141CCCA92900767A0F /* GithubClient.swift in Sources */,
+				15FFFA031CCC8E2700767A0F /* HttpService.swift in Sources */,
+				15FFFA141CCCA92900767A0F /* GithubService.swift in Sources */,
+				15041D121D2AD4020009610C /* HttpMethod.swift in Sources */,
 				15FFF9EB1CCC886600767A0F /* AppModule.swift in Sources */,
 				15FFFA191CCD30B800767A0F /* AnalyticsTracker.swift in Sources */,
 				15FFFA0E1CCC990500767A0F /* Repository.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class HttpClient: Client {
+public class HttpClient: HttpService {
 	
 	private let urlSession: URLSession
 	private let baseUrl: String

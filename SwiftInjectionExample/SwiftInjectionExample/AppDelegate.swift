@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	override init() {
 		super.init()
-		
 		DIContainer.instance.addModule(module: AppModule())
 	}
 
