@@ -4,15 +4,23 @@
 
 A dependency container for Swift
 
-#### Setup
+#### Setting up Dependencies
+
+A Module file is where you define your dependencies. The goal is to abstract out all your dependencies in the module file. The only class in your project that should know about concrete implementations should be the module class, the rest of the classes in your application shoul all be using these implementations through interfaces.
+
+You could have as many module classes as you want in order to organize your dependencies
 ```swift
 public class AppModule: DIModule {
+	
 	public func load(container: DIContainer) {
-		container.bind(DatabaseAdapter.self) { MySqlAdapter() }
-		container.bind(UserStorage.self) { UserStorage(databaseAdapter: container.resolve(DatabaseAdapter.self)) }
-		container.bind(Session.self, asSingleton: true) { Session() }
-		container.bind(NSUserDefaults.self) { NSUserDefaults.standardUserDefaults() }
+		container.bind(type: URLSession.self) { URLSession.shared() }
+		container.bind(type: HttpService.self) { HttpClient(baseUrl: "https://api.github.com", urlSession: container.resolve(type: URLSession.self)) }
+		container.bind(type: GithubService.self) { GithubHttpClient(httpService: container.resolve(type: HttpService.self)) }
+		container.bind(type: UserDefaults.self, asSingleton: false) { UserDefaults.standard() }
+		container.bind(type: AnalyticsTracker.self, named: GoogleAnalyticsTracker.analyticsIdentifier()) { GoogleAnalyticsTracker() }
+		container.bind(type: AnalyticsTracker.self, named: AmplitudeAnalyticsTracker.analyticsIdentifier()) { AmplitudeAnalyticsTracker() }
 	}
+	
 }
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,84 +31,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-#### Binding
-Bind protocol to implementation
+#### Binding Internal classes
+avoid direct use of singletons to make your code more testable
 ```swift
-bind(DatabaseAdapter.self) { MySqlAdapter() }
-// Then when it needs to be injected
-let dbAdapter = inject(DatabaseAdapter.self)
+container.bind(type: URLSession.self) { URLSession.shared() }
 ```
-Bind as Singleton
+#### Binding classes as singleton
+Instead of adding singleton logic to your classes simply bind them as singleton
+Note: Structs are not compatible with singleton pattern
 ```swift
+// Bind class as singleton
 bind(Session.self, asSingleton: true) { Session() }
-// Then when it needs to be injected
-let session = inject(Session.self)
+
+// Bind protocol to an implementation as singleton
+bind(AnalyticsTracker.self, asSingleton: true) { GoogleAnalyticsTracker() }
 ```
-Bind Named Instances
+#### Bind Named Instances
+In cases where you have multiple implementations for a single protocol you can use named binding to retrieve the correct instance
 ```swift
 bind(AnalyticsTracker.self, named: "Google") { GoogleAnalyticsTraker() }
 bind(AnalyticsTracker.self, named: "Amplitude") { AmplitudeAnalyticsTracker() }
-// Then when it needs to be injected
-let googleAnalyticsTracker = inject(AnalyticsTracker.self, named: "Google")
-let arrayOfAnalyticsTrackers = injectAll(AnalyticsTracker.self)
+
+// Inject expected instance
+let googleAnalyticsTracker: AnalyticsTracker = inject(named: "Google")
+let amplitudeAnalyticsTracker: AnalyticsTracker = inject(named: "Amplitude")
+
+// Get all implementations for a given protocol (great for chain of responssibilities)
+let trackers: [AnalyticsTracker] = injectAll()
 ```
 
 #### Property Injection
+Only use property injection on root level, for anything else below the viewController use constructor injection
 ```swift
 class ViewController: UIViewController {
-	let userStorage = inject(UserStorage.self) // new instance
-	let session = inject(Session.self) // singleton instance
-	let userDefaults = inject(NSUserDefaults.self) // shared instance
+	let githubService: GithubService = inject() // Injects the implementation defined in module
+	let session = inject(Session.self) // injects the singleton instance
+	let analyticTrackers: [AnalyticsTracker] = injectAll() // Injects all implemetations of AnalyticsTracker
 }
 ```
 
 #### Constructor Injection
+Simpy pass dependencies through the intiializer and define binding in the module file
 ```swift
-protocol DatabaseAdapter {  
-   func execute(query: String) -> Result
+protocol GithubService { }
+
+public protocol HttpService { }
+
+public class GithubHttpClient: GithubClient {
+	private let httpService: HttpService
+	public init(httpService: HttpService) {
+		self.httpService = httpService
+	}
 }
 
-class MySqlAdapter: DatabaseAdapter {  
-   func execute(query: String) -> Result { /* Implementation */  }
-}
-
-class UserStorage {
-   let databaseAdapter: DatabaseAdapter
-   
-   init(databaseAdapter: DatabaseAdapter) {
-      self.databaseAdapter = databaseAdapter
-   }
-   
-   func fetchUsers() -> Users {
-      return databaseAdapter.execute(SOME_QUERY)
-   }
-}
-
-// Add binding in module
 public class AppModule: DIModule {
 	public func load(container: DIContainer) {
-		container.bind(DatabaseAdapter.self) { MySqlAdapter() }
-		container.bind(UserStorage.self) { UserStorage(databaseAdapter: container.resolve(DatabaseAdapter.self)) }
+		container.bind(type: URLSession.self) { URLSession.shared() }
+		container.bind(type: HttpService.self) { HttpClient(baseUrl: "https://api.github.com", urlSession: container.resolve(type: URLSession.self)) }
+		container.bind(type: GithubService.self) { GithubHttpClient(httpService: container.resolve(type: HttpService.self)) }
 	}
 }
 
-// Here we get a user storage that is using MySqlAdapter
-let userStorage = inject(UserStorage.self)
-```
-
-#### Chain of Responsibilities
-```swift
 class ViewController: UIViewController {
-	// Injects all instances of AnalyticsTracker protocol (GoogleAnalyticsTracker & AmplitudeAnalyticsTracker)
-	// analyticsTrackers type is [AnalyticsTracker]
-	let analyticsTrackers = injectAll(AnalyticsTracker.self)
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		analyticsTrackers.forEach { $0.trackEvent("HomePage") }
-	}
+	// This will return an instance of GithubHttpClient with all depndencies as defined in module
+	let githubService: GithubService = inject()
 }
 ```
-
-⚠️ SwiftInjection is stable, but there will be a lot of API breaking changes as this is work in progress
 
