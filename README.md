@@ -6,9 +6,9 @@ A dependency container for Swift
 
 #### Setting up Dependencies
 
-A Module file is where you define your dependencies. The goal is to abstract out all your dependencies in the module file. The only class in your project that should know about concrete implementations should be the module class, the rest of the classes in your application shoul all be using these implementations through interfaces.
+A Module file is where you define your dependencies. The goal is to abstract out all your dependencies in this file. The only class in your project that should know about concrete implementations should be the module class, the rest of the classes in your application should be using these implementations through interfaces.
 
-You could have as many module classes as you want in order to organize your dependencies
+You could have multiple module classes in order to organize your dependencies
 ```swift
 public class AppModule: DIModule {
 	
@@ -75,16 +75,16 @@ Simpy pass dependencies through the intiializer and define binding in the module
 ```swift
 protocol GithubService { }
 
-public protocol HttpService { }
+protocol HttpService { }
 
-public class GithubHttpClient: GithubClient {
+class GithubHttpClient: GithubClient {
 	private let httpService: HttpService
 	public init(httpService: HttpService) {
 		self.httpService = httpService
 	}
 }
 
-public class AppModule: DIModule {
+class AppModule: DIModule {
 	public func load(container: DIContainer) {
 		container.bind(type: URLSession.self) { URLSession.shared() }
 		container.bind(type: HttpService.self) { HttpClient(baseUrl: "https://api.github.com", urlSession: container.resolve(type: URLSession.self)) }
