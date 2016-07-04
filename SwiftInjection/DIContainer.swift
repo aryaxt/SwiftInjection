@@ -6,16 +6,13 @@
 //  Copyright © 2016 Aryan Ghassemi. All rights reserved.
 //
 
-public func inject<T>(type: T.Type, named: String? = nil) -> T {
-	return DIContainer.instance.resolve(type: type)
+
+public func inject<T>(named: String? = nil) -> T {
+	return DIContainer.instance.resolve(type: T.self)
 }
 
-public func injectAll<T>(type: T.Type) -> [T] {
-	return DIContainer.instance.resolveAll(type: type)
-}
-
-public func inject(into: NSObject) {
-	
+public func injectAll<T>() -> [T] {
+	return DIContainer.instance.resolveAll(type: T.self)
 }
 
 public class DIContainer {

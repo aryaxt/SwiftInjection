@@ -11,9 +11,9 @@ import SwiftInjection
 
 class ViewController: UIViewController {
 	
-	let userDefaults = inject(type: UserDefaults.self)
-	let githubClient = inject(type: GithubClient.self)
-	let analyticsTrackers = injectAll(type: AnalyticsTracker.self)
+	let userDefaults: UserDefaults = inject()
+	let githubClient: GithubClient = inject()
+	let analyticsTrackers: [AnalyticsTracker] = injectAll()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

@@ -17,7 +17,13 @@ class DIContainerTests: XCTestCase {
 		super.setUp()
 		container = DIContainer()
 	}
-
+	
+	func testResolvingGlobalFunction() {
+		DIContainer.instance.bind(type: Pump.self) { RegularPump() }
+		let pump: Pump = inject()
+		XCTAssertTrue(pump.dynamicType == RegularPump.self)
+	}
+	
 	func testShouldReturnCorrectImplementation() {
 		container.bind(type: Pump.self) { RegularPump() }
 		let instance = container.resolve(type: Pump.self)

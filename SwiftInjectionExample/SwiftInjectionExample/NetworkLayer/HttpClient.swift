@@ -10,11 +10,13 @@ import Foundation
 
 public class HttpClient: Client {
 	
+	private let urlSession: URLSession
 	private let baseUrl: String
 	private let timeout: TimeInterval = 60
 	
-	init(baseUrl: String) {
+	init(baseUrl: String, urlSession: URLSession) {
 		self.baseUrl = baseUrl
+		self.urlSession = urlSession
 	}
 	
 	// MARK: - Public -
@@ -22,7 +24,7 @@ public class HttpClient: Client {
 	public func fetchObject<T: Mappable>(type: T.Type, path: String, method: HttpMethod, completion: (Result<T>)->Void) -> URLSessionDataTask {
 		let request = requestWithPath(path: path, method: method)
 		
-		let task = URLSession.shared().dataTask(with: request as URLRequest) { data, response, error in
+		let task = urlSession.dataTask(with: request as URLRequest) { data, response, error in
 			if let error = error {
 				completion(Result.Failure(error))
 			}
@@ -41,7 +43,7 @@ public class HttpClient: Client {
 	public func fetchObjects<T: Mappable>(type: T.Type, path: String, method: HttpMethod, completion: (Result<[T]>)->Void) -> URLSessionDataTask {
 		let request = requestWithPath(path: path, method: method)
 		
-		let task = URLSession.shared().dataTask(with: request) { data, response, error in
+		let task = urlSession.dataTask(with: request) { data, response, error in
 			if let error = error {
 				completion(Result.Failure(error))
 			}
