@@ -79,6 +79,7 @@ protocol HttpService { }
 
 class GithubHttpClient: GithubService {
 	private let httpService: HttpService
+	// Constructor injection
 	public init(httpService: HttpService) {
 		self.httpService = httpService
 	}
@@ -93,6 +94,7 @@ class AppModule: DIModule {
 }
 
 class ViewController: UIViewController {
+	// Property Injection
 	// This will return an instance of GithubHttpClient with all depndencies as defined in module
 	let githubService: GithubService = inject()
 }
