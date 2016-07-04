@@ -20,12 +20,8 @@ internal class DIBindingProvider {
 
 	func provideInstance(named: String? = nil) -> Any {
 		let named = named ?? DIBindingProvider.defaultBindingName
-		
-		if let namedBinding = namedBindings[named] {
-			return namedBinding.provideInstance()
-		}
-		
-		fatalError("Did not find binding named \(named)")
+		guard let namedBinding = namedBindings[named] else { fatalError("Did not find binding named \(named)") }
+		return namedBinding
 	}
 	
 	func provideAllInstances() -> [Any] {

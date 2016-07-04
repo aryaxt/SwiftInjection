@@ -42,18 +42,14 @@ public class DIContainer {
 	*/
 	public func resolve<T>(type: T.Type, named: String? = nil) -> T {
 		let typeString = String(type)
+		guard let bindingProvider = bindingDictionary[typeString] else { fatalError("No binding found for \(typeString)") }
+		let result = bindingProvider.provideInstance(named: named)
 		
-		if let bindingProvider = bindingDictionary[typeString] {
-			let result = bindingProvider.provideInstance(named: named)
-			
-			if let result = result as? T {
-				return result
-			}
-			
-			fatalError("Invalid object type \(String(result.dynamicType)) for binding \(typeString)")
-		}
+		guard
+			let finalResult = result as? T
+			else { fatalError("Invalid object type \(String(result.dynamicType)) for binding \(typeString)") }
 		
-		fatalError("No binding found for \(typeString)")
+		return finalResult
 	}
 	
 	/**
@@ -65,14 +61,8 @@ public class DIContainer {
 	*/
 	public func resolveAll<T>(type: T.Type) -> [T] {
 		let typeString = String(type)
-		
-		if let bindingProvider = bindingDictionary[typeString] {
-			let result = bindingProvider.provideAllInstances()
-			// TODO: Think
-			return result.flatMap { $0 as? T }
-		}
-		
-		fatalError("No binding found for \(typeString)")
+		guard let bindingProvider = bindingDictionary[typeString] else { fatalError("No binding found for \(typeString)") }
+		return bindingProvider.provideAllInstances().flatMap { $0 as? T }
 	}
 	
 	/**
@@ -85,16 +75,8 @@ public class DIContainer {
 	*/
 	public func bind<T>(type: T.Type, named: String? = nil, asSingleton: Bool = false, closure: BindingClosure) {
 		let typeString = String(type)
-		let bindingProvider: DIBindingProvider
-		
-		if let existing = bindingDictionary[typeString] {
-			bindingProvider = existing
-		}
-		else {
-			bindingProvider = DIBindingProvider()
-			bindingDictionary[typeString] = bindingProvider
-		}
-		
+		let bindingProvider = bindingDictionary[typeString] ?? DIBindingProvider()
+		bindingDictionary[typeString] = bindingProvider
 		bindingProvider.addBinding(closure: closure, named: named, asSingleton: asSingleton)
 	}
 
