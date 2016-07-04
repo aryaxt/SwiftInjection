@@ -78,15 +78,15 @@ protocol GithubService { }
 protocol HttpService { }
 
 class GithubHttpClient: GithubService {
-	private let httpService: HttpService
+	let httpService: HttpService
 	// Constructor injection
-	public init(httpService: HttpService) {
+	init(httpService: HttpService) {
 		self.httpService = httpService
 	}
 }
 
 class AppModule: DIModule {
-	public func load(container: DIContainer) {
+	func load(container: DIContainer) {
 		container.bind(type: URLSession.self) { URLSession.shared() }
 		container.bind(type: HttpService.self) { HttpClient(baseUrl: "https://api.github.com", urlSession: container.resolve(type: URLSession.self)) }
 		container.bind(type: GithubService.self) { GithubHttpClient(httpService: container.resolve(type: HttpService.self)) }
