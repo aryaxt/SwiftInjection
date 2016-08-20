@@ -9,6 +9,7 @@
 import Foundation
 
 extension Repository: Mappable {
+	
 	public init?(json: [NSObject : AnyObject]) {
 		guard	let id = json["id"] as? Int,
 			let name = json["name"] as? String,
@@ -19,4 +20,5 @@ extension Repository: Mappable {
 		self.nuame = name
 		self.description = description
 	}
+	
 }
