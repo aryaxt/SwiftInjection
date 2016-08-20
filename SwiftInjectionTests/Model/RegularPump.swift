@@ -6,6 +6,6 @@
 //  Copyright © 2016 Aryan Ghassemi. All rights reserved.
 //
 
-public class RegularPump: Pump {
+open class RegularPump: Pump {
 
 }
