@@ -6,7 +6,7 @@
 //  Copyright © 2016 Aryan Ghassemi. All rights reserved.
 //
 
-public class CoffeeMaker {
+open class CoffeeMaker {
 	
 	let heater: Heater
 	let pump: Pump

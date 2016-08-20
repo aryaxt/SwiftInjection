@@ -11,21 +11,21 @@ import SwiftInjection
 
 class ViewController: UIViewController {
 	
-	let userDefaults = inject(NSUserDefaults.self)
-	let githubClient = inject(GithubClient.self)
-	let analyticsTrackers = injectAll(AnalyticsTracker.self)
+	let userDefaults: UserDefaults = inject()
+	let githubService: GithubService = inject()
+	let analyticsTrackers: [AnalyticsTracker] = injectAll()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		analyticsTrackers.forEach { $0.trackEvent(name: "ViewController", dictionary: nil)  }
 		
-		githubClient.fetchRepos(user: "aryaxt") {
+		githubService.fetchRepos(user: "aryaxt") {
 			switch $0 {
-			case .Success(let repos):
+			case .success(let repos):
 				print(repos)
 				
-			case .Failure(let error):
+			case .failure(let error):
 				print(error)
 			}
 		}

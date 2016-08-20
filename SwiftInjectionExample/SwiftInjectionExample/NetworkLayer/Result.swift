@@ -7,14 +7,14 @@
 //
 
 public enum Result<T> {
-	case Success(T)
-	case Failure(ErrorType)
+	case success(T)
+	case failure(Error)
 	
 	public var isError: Bool {
 		switch self {
-		case .Success(_):
+		case .success(_):
 			return false
-		case .Failure(_):
+		case .failure(_):
 			return true
 		}
 	}
