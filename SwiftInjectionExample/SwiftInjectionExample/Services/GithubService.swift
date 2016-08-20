@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol GithubService {
-	@discardableResult func fetchRepos(user: String, completion: (Result<[Repository]>)->Void) -> URLSessionTask
+	@discardableResult func fetchRepos(user: String, completion: @escaping (Result<[Repository]>)->Void) -> URLSessionTask
 }

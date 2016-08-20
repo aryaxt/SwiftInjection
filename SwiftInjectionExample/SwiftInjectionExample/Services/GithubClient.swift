@@ -16,8 +16,8 @@ public class GithubClient: GithubService {
 		self.httpService = httpService
 	}
 	
-	public func fetchRepos(user: String, completion: (Result<[Repository]>)->Void) -> URLSessionTask {
-		return httpService.fetchObjects(type: Repository.self, path: "users/\(user)/repos", method: .Get, completion: completion)
+	public func fetchRepos(user: String, completion: @escaping (Result<[Repository]>)->Void) -> URLSessionTask {
+		return httpService.fetchObjects(type: Repository.self, path: "users/\(user)/repos", method: .get, completion: completion)
 	}
 	
 }

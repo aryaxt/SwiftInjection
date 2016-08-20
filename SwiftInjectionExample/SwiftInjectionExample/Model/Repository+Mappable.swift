@@ -11,14 +11,9 @@ import Foundation
 extension Repository: Mappable {
 	
 	public init?(json: [NSObject : AnyObject]) {
-		guard	let id = json["id"] as? Int,
-			let name = json["name"] as? String,
-			let description = json["description"] as? String
-			else { return nil }
-		
-		self.id = id
-		self.nuame = name
-		self.description = description
+		self.id = 1
+		self.nuame = "name"
+		self.description = "desc"
 	}
 	
 }

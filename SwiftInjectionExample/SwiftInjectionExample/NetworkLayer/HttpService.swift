@@ -9,6 +9,6 @@
 import Foundation
 
 public protocol HttpService {
-	func fetchObject<T: Mappable>(type: T.Type, path: String, method: HttpMethod, completion: (Result<T>)->Void) -> URLSessionDataTask
-	func fetchObjects<T: Mappable>(type: T.Type, path: String, method: HttpMethod, completion: (Result<[T]>)->Void) -> URLSessionDataTask
+	func fetchObject<T: Mappable>(type: T.Type, path: String, method: HttpMethod, completion: @escaping (Result<T>)->Void) -> URLSessionDataTask
+	func fetchObjects<T: Mappable>(type: T.Type, path: String, method: HttpMethod, completion: @escaping (Result<[T]>)->Void) -> URLSessionDataTask
 }

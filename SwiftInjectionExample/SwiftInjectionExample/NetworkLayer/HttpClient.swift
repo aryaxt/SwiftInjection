@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class HttpClient: HttpService {
+open class HttpClient: HttpService {
 	
 	private let urlSession: URLSession
 	private let baseUrl: String
@@ -21,18 +21,18 @@ public class HttpClient: HttpService {
 	
 	// MARK: - Public -
 	
-	public func fetchObject<T: Mappable>(type: T.Type, path: String, method: HttpMethod, completion: (Result<T>)->Void) -> URLSessionDataTask {
+	public func fetchObject<T : Mappable>(type: T.Type, path: String, method: HttpMethod, completion: @escaping (Result<T>) -> Void) -> URLSessionDataTask {
 		let request = requestWithPath(path: path, method: method)
 		
 		let task = urlSession.dataTask(with: request as URLRequest) { data, response, error in
 			if let error = error {
-				completion(Result.Failure(error))
+				completion(Result.failure(error))
 			}
 			else {
-				guard let data = data else { completion(Result.Failure(ClientError.MissingResponse)); return }
-				guard let dictionary = NSKeyedUnarchiver.unarchiveObject(with: data) as? [NSObject: AnyObject] else { completion(Result.Failure(ClientError.InvalidResponse)); return }
-				guard let object = T(json: dictionary) else { completion(Result.Failure(ClientError.MappingFaild)); return }
-				completion(Result.Success(object))
+				guard let data = data else { completion(Result.failure(ClientError.missingResponse)); return }
+				guard let dictionary = NSKeyedUnarchiver.unarchiveObject(with: data) as? [NSObject: AnyObject] else { completion(Result.failure(ClientError.invalidResponse)); return }
+				guard let object = T(json: dictionary) else { completion(Result.failure(ClientError.mappingFaild)); return }
+				completion(Result.success(object))
 			}
 		}
 		
@@ -40,24 +40,24 @@ public class HttpClient: HttpService {
 		return task
 	}
 	
-	public func fetchObjects<T: Mappable>(type: T.Type, path: String, method: HttpMethod, completion: (Result<[T]>)->Void) -> URLSessionDataTask {
+	public func fetchObjects<T : Mappable>(type: T.Type, path: String, method: HttpMethod, completion: @escaping (Result<[T]>) -> Void) -> URLSessionDataTask {
 		let request = requestWithPath(path: path, method: method)
 		
 		let task = urlSession.dataTask(with: request) { data, response, error in
 			if let error = error {
-				completion(Result.Failure(error))
+				completion(Result.failure(error))
 			}
 			else {
-				guard let data = data else { completion(Result.Failure(ClientError.MissingResponse)); return }
-
+				guard let data = data else { completion(Result.failure(ClientError.missingResponse)); return }
+				
 				do {
 					let object = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-					guard let dicts = object as? [[NSObject: AnyObject]] else { completion(Result.Failure(ClientError.InvalidResponse)); return }
+					guard let dicts = object as? [[NSObject: AnyObject]] else { completion(Result.failure(ClientError.invalidResponse)); return }
 					let objects = dicts.flatMap { T(json: $0) }
-					completion(Result.Success(objects))
+					completion(Result.success(objects))
 				}
 				catch let error {
-					completion(Result.Failure(error))
+					completion(Result.failure(error))
 				}
 			}
 		}
@@ -68,9 +68,9 @@ public class HttpClient: HttpService {
 	
 	// MARK: - Private -
 	
-	private func requestWithPath(path: String, method: HttpMethod) -> URLRequest {
+	fileprivate func requestWithPath(path: String, method: HttpMethod) -> URLRequest {
 		var request = URLRequest(
-			url: NSURL(string: "\(baseUrl)/\(path)") as! URL,
+			url: URL(string: "\(baseUrl)/\(path)")!,
 			cachePolicy: .reloadIgnoringCacheData,
 			timeoutInterval: timeout)
 		request.httpMethod = method.rawValue

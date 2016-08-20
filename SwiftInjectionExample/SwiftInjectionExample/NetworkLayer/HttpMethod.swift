@@ -7,8 +7,8 @@
 //
 
 public enum HttpMethod: String {
-	case Get	= "GET"
-	case Post	= "POST"
-	case Put	= "PUT"
-	case Delete = "DELETE"
+	case get	= "GET"
+	case post	= "POST"
+	case put	= "PUT"
+	case delete = "DELETE"
 }

@@ -7,8 +7,8 @@
 //
 
 
-public func inject<T>(named: String? = nil) -> T {
-	return DIContainer.instance.resolve(type: T.self)
+public func inject<T>(_ named: String? = nil) -> T {
+	return DIContainer.instance.resolve(T.self)
 }
 
 public func injectAll<T>() -> [T] {
@@ -17,16 +17,16 @@ public func injectAll<T>() -> [T] {
 
 public class DIContainer {
 
-	public static let instance = DIContainer()
+	open static let instance = DIContainer()
 	public typealias BindingClosure = (Void)->Any
-	private var bindingDictionary = [String: DIBindingProvider]()
+	fileprivate var bindingDictionary = [String: DIBindingProvider]()
 	
 	/**
 	Adds all binding from module to DIContainer
 	
 	- parameter module: A subclass of DIAbstractModule that implements DIModule
 	*/
-	public func addModule<T: DIModule>(module: T) {
+	public func addModule<T: DIModule>(_ module: T) {
 		module.load(container: self)
 	}
 	
@@ -37,14 +37,14 @@ public class DIContainer {
 	
 	- returns: An instance of class or an implementation of a protocol
 	*/
-	public func resolve<T>(type: T.Type, named: String? = nil) -> T {
-		let typeString = String(type)
+	public func resolve<T>(_ type: T.Type, named: String? = nil) -> T {
+		let typeString = String(describing: type)
 		guard let bindingProvider = bindingDictionary[typeString] else { fatalError("No binding found for \(typeString)") }
 		let result = bindingProvider.provideInstance(named: named)
 		
 		guard
 			let finalResult = result as? T
-			else { fatalError("Invalid object type \(String(result.dynamicType)) for binding \(typeString)") }
+			else { fatalError("Invalid object type \(String(describing: type(of: result))) for binding \(typeString)") }
 		
 		return finalResult
 	}
@@ -57,7 +57,7 @@ public class DIContainer {
 	- returns: an array of implementations
 	*/
 	public func resolveAll<T>(type: T.Type) -> [T] {
-		let typeString = String(type)
+		let typeString = String(describing: type)
 		guard let bindingProvider = bindingDictionary[typeString] else { fatalError("No binding found for \(typeString)") }
 		return bindingProvider.provideAllInstances().flatMap { $0 as? T }
 	}
@@ -71,7 +71,7 @@ public class DIContainer {
 	- parameter closure:     closure to provide an injection object
 	*/
 	public func bind<T>(type: T.Type, named: String? = nil, asSingleton: Bool = false, closure: BindingClosure) {
-		let typeString = String(type)
+		let typeString = String(describing: type)
 		let bindingProvider = bindingDictionary[typeString] ?? DIBindingProvider()
 		bindingDictionary[typeString] = bindingProvider
 		bindingProvider.addBinding(closure: closure, named: named, asSingleton: asSingleton)

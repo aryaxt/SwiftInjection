@@ -6,9 +6,9 @@
 //  Copyright © 2016 Aryan Ghassemi. All rights reserved.
 //
 
-public enum ClientError: ErrorProtocol {
-	case InvalidUrl
-	case MissingResponse
-	case MappingFaild
-	case InvalidResponse
+public enum ClientError: Error {
+	case invalidUrl
+	case missingResponse
+	case mappingFaild
+	case invalidResponse
 }

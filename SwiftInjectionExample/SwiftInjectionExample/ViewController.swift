@@ -22,10 +22,10 @@ class ViewController: UIViewController {
 		
 		githubService.fetchRepos(user: "aryaxt") {
 			switch $0 {
-			case .Success(let repos):
+			case .success(let repos):
 				print(repos)
 				
-			case .Failure(let error):
+			case .failure(let error):
 				print(error)
 			}
 		}

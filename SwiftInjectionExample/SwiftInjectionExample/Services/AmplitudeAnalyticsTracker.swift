@@ -8,13 +8,13 @@
 
 import Foundation
 
-public class AmplitudeAnalyticsTracker: AnalyticsTracker {
+open class AmplitudeAnalyticsTracker: AnalyticsTracker {
 	
-	public static func analyticsIdentifier() -> String {
+	open static func analyticsIdentifier() -> String {
 		return "Amplitude"
 	}
 	
-	public func trackEvent(name: String, dictionary: [NSObject : AnyObject]? = nil) {
+	open func trackEvent(name: String, dictionary: [NSObject : AnyObject]? = nil) {
 		print("\(AmplitudeAnalyticsTracker.analyticsIdentifier()): Tracking event with name \(name)")
 	}
 	
