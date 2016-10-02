@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name = 'SwiftInjection'
-    s.version = '0.5'
+    s.version = '0.6'
     s.summary = 'A dependency injection framework for swift'
     s.homepage = 'https://github.com/aryaxt/SwiftInjection'
     s.license = {
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
       :file => 'License.txt'
     }
     s.author = {'Aryan Ghassemi' => 'https://github.com/aryaxt/SwiftInjection'}
-    s.source = {:git => 'https://github.com/aryaxt/SwiftInjection.git', :tag => '0.5'}
+    s.source = {:git => 'https://github.com/aryaxt/SwiftInjection.git', :tag => '0.6'}
     s.platform = :ios, '8.0'
     s.source_files = 'SwiftInjection/*.{swift}'
     s.framework = 'Foundation'

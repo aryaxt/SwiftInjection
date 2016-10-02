@@ -26,27 +26,27 @@ class DIContainerTests: XCTestCase {
 	
 	func testShouldReturnCorrectImplementation() {
 		container.bind(type: Pump.self) { RegularPump() }
-		let instance = container.resolve(Pump.self)
+		let instance = container.resolve(type: Pump.self)
 		XCTAssertTrue(type(of: instance) == RegularPump.self)
 	}
 	
 	func testShouldReturnNewInstance() {
 		container.bind(type: RegularPump.self) { RegularPump() }
-		let instance1 = container.resolve(RegularPump.self)
-		let instance2 = container.resolve(RegularPump.self)
+		let instance1 = container.resolve(type: RegularPump.self)
+		let instance2 = container.resolve(type: RegularPump.self)
 		XCTAssertTrue(instance1 !== instance2)
 	}
 	
 	func testShouldReturnSameInstanceForSingleton() {
 		container.bind(type: RegularPump.self, asSingleton: true) { RegularPump() }
-		let instance1 = container.resolve(RegularPump.self)
-		let instance2 = container.resolve(RegularPump.self)
+		let instance1 = container.resolve(type: RegularPump.self)
+		let instance2 = container.resolve(type: RegularPump.self)
 		XCTAssertTrue(instance1 === instance2)
 	}
     
     func testShouldReturnCorrectImplementationForStructs() {
         container.bind(type: SomeStruct.self) { SomeStruct() }
-        let instance = container.resolve(SomeStruct.self)
+        let instance = container.resolve(type: SomeStruct.self)
         XCTAssertTrue(type(of: instance) == SomeStruct.self)
     }
 	
@@ -55,8 +55,8 @@ class DIContainerTests: XCTestCase {
 		let turboIdentifier = "turbo"
 		container.bind(type: Pump.self, named: regularIdentifier) { RegularPump() }
 		container.bind(type: Pump.self, named: turboIdentifier) { TurboPump() }
-		let regular = container.resolve(Pump.self, named: regularIdentifier)
-		let turbo = container.resolve(Pump.self, named: turboIdentifier)
+		let regular = container.resolve(type: Pump.self, named: regularIdentifier)
+		let turbo = container.resolve(type: Pump.self, named: turboIdentifier)
 		XCTAssert(type(of: regular) == RegularPump.self)
 		XCTAssert(type(of: turbo) == TurboPump.self)
 	}

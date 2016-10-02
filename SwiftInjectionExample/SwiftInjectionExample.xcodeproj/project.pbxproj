@@ -123,11 +123,11 @@
 		15FFF9A71CCC876000767A0F = {
 			isa = PBXGroup;
 			children = (
-				15FFF9FD1CCC8A4900767A0F /* SwiftInjection.framework */,
 				15FFF9B21CCC876000767A0F /* SwiftInjectionExample */,
 				15FFF9C71CCC876000767A0F /* SwiftInjectionExampleTests */,
 				15FFF9D21CCC876000767A0F /* SwiftInjectionExampleUITests */,
 				15FFF9B11CCC876000767A0F /* Products */,
+				15FFF9FD1CCC8A4900767A0F /* SwiftInjection.framework */,
 			);
 			sourceTree = "<group>";
 		};

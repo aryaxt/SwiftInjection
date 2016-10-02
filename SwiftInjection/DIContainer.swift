@@ -7,8 +7,8 @@
 //
 
 
-public func inject<T>(_ named: String? = nil) -> T {
-	return DIContainer.instance.resolve(T.self)
+public func inject<T>(named: String? = nil) -> T {
+	return DIContainer.instance.resolve(type: T.self)
 }
 
 public func injectAll<T>() -> [T] {
@@ -37,7 +37,7 @@ public class DIContainer {
 	
 	- returns: An instance of class or an implementation of a protocol
 	*/
-	public func resolve<T>(_ type: T.Type, named: String? = nil) -> T {
+	public func resolve<T>(type: T.Type, named: String? = nil) -> T {
 		let typeString = String(describing: type)
 		guard let bindingProvider = bindingDictionary[typeString] else { fatalError("No binding found for \(typeString)") }
 		let result = bindingProvider.provideInstance(named: named)
