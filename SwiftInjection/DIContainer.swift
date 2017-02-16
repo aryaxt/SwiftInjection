@@ -18,7 +18,6 @@ public func injectAll<T>() -> [T] {
 public class DIContainer {
 
 	open static let instance = DIContainer()
-	public typealias BindingClosure = (Void)->Any
 	fileprivate var bindingDictionary = [String: DIBindingProvider]()
 	
 	/**
@@ -70,7 +69,7 @@ public class DIContainer {
 	- parameter asSingleton: if true DI will use a single instance wherever injected
 	- parameter closure:     closure to provide an injection object
 	*/
-	public func bind<T>(type: T.Type, named: String? = nil, asSingleton: Bool = false, closure: @escaping BindingClosure) {
+	public func bind<T>(type: T.Type, named: String? = nil, asSingleton: Bool = false, closure: @escaping (Void)->T) {
 		let typeString = String(describing: type)
 		let bindingProvider = bindingDictionary[typeString] ?? DIBindingProvider()
 		bindingDictionary[typeString] = bindingProvider
