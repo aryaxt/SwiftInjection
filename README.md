@@ -13,10 +13,10 @@ You could have multiple module classes in order to organize your dependencies
 public class AppModule: DIModule {
 	
 	public func load(container: DIContainer) {
-		container.bind(type: URLSession.self) { URLSession.shared() }
-		container.bind(type: HttpService.self) { HttpClient(baseUrl: "https://api.github.com", urlSession: container.resolve(type: URLSession.self)) }
-		container.bind(type: GithubService.self) { GithubHttpClient(httpService: container.resolve(type: HttpService.self)) }
-		container.bind(type: UserDefaults.self, asSingleton: false) { UserDefaults.standard() }
+		container.bind() { UserDefaults.standard() }
+		container.bind() { URLSession.shared() }
+		container.bind(type: HttpService.self) { HttpClient(baseUrl: "https://api.github.com", urlSession: $0)) }
+		container.bind(type: GithubService.self) { GithubHttpClient(httpService: $0) }
 		container.bind(type: AnalyticsTracker.self, named: GoogleAnalyticsTracker.analyticsIdentifier()) { GoogleAnalyticsTracker() }
 		container.bind(type: AnalyticsTracker.self, named: AmplitudeAnalyticsTracker.analyticsIdentifier()) { AmplitudeAnalyticsTracker() }
 	}
@@ -34,14 +34,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #### Binding Internal classes
 avoid direct use of singletons to make your code more testable
 ```swift
-container.bind(type: URLSession.self) { URLSession.shared() }
+container.bind() { URLSession.shared() }
 ```
 #### Binding classes as singleton
 Instead of adding singleton logic to your classes simply bind them as singleton
 Note: Structs are not compatible with singleton pattern
 ```swift
 // Bind class as singleton
-bind(Session.self, asSingleton: true) { Session() }
+bind(asSingleton: true) { Session() }
 
 // Bind protocol to an implementation as singleton
 bind(AnalyticsTracker.self, asSingleton: true) { GoogleAnalyticsTracker() }
@@ -88,8 +88,8 @@ class GithubHttpClient: GithubService {
 class AppModule: DIModule {
 	func load(container: DIContainer) {
 		container.bind(type: URLSession.self) { URLSession.shared() }
-		container.bind(type: HttpService.self) { HttpClient(baseUrl: "https://api.github.com", urlSession: container.resolve(type: URLSession.self)) }
-		container.bind(type: GithubService.self) { GithubHttpClient(httpService: container.resolve(type: HttpService.self)) }
+		container.bind(type: HttpService.self) { HttpClient(baseUrl: "https://api.github.com", urlSession: $0)) }
+		container.bind(type: GithubService.self) { GithubHttpClient(httpService: $0) }
 	}
 }
 
